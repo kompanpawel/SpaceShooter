@@ -5,7 +5,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ public class GameScreen implements Screen {
     Texture background;
     Texture laserTexture;
 
-    public static final float speed = 200;
+
     public static final float laserSpeed = 500;
 
     float screenWidth = 0;
@@ -38,11 +37,7 @@ public class GameScreen implements Screen {
         screenWidth = Gdx.graphics.getWidth();
         screenHeight= Gdx.graphics.getHeight();
 
-        xWing = new Texture("xwing.png");
         background = new Texture("space.gif");
-        laserTexture = new Texture("laserGreen03.png");
-
-        shipLocation = new Vector2(20,screenHeight / 2);
     }
 
     @Override
