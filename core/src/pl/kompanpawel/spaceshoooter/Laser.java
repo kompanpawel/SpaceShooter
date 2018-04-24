@@ -2,32 +2,46 @@ package pl.kompanpawel.spaceshoooter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class Laser extends Entity{
-    private Vector2 laserLocation;
-    private Vector2 laserVelocity;
     private boolean isValid = true;
 
     private Texture laser;
-    public Laser(Vector2 sentLocation, Vector2 sentVelocity) {
-        laserLocation = new Vector2(sentLocation.x, sentLocation.y);
-        laserVelocity = new Vector2(sentVelocity.x, sentVelocity.y);
+    private Entity owner;
+
+    public Laser(Entity owner, Vector2 sentLocation, Vector2 sentVelocity) {
+        this.setLocation(sentLocation);
+        this.setVelocity(sentVelocity);
         laser = SpaceShoooter.assetManager.get("laserGreen03.png");
+        this.owner = owner;
 
     }
 
     public void update() {
+
         if(!isValid) {return;}
-        laserLocation.x += laserVelocity.x;
-        laserLocation.y += laserVelocity.y;
-        if((laserLocation.x < 0 - laser.getWidth()) && (laserLocation.x > Gdx.graphics.getWidth())) {
+        this.getLocation().x += this.getVelocity().x;
+        this.getLocation().y += this.getVelocity().y;
+        if((getLocation().x < 0 - laser.getWidth()) && (getLocation().x > Gdx.graphics.getWidth())) {
             isValid = false;
             return;
         }
-        if((laserLocation.y < 0 + laser.getHeight()) && (laserLocation.y > Gdx.graphics.getHeight())) {
+        if((getLocation().y < 0 + laser.getHeight()) && (getLocation().y > Gdx.graphics.getHeight())) {
             isValid = false;
             return;
         }
     }
+
+    @Override
+    public void draw(SpriteBatch batch, float delta) {
+           batch.draw(laser, getLocation().x, getLocation().y);
+           update();
+    }
+
+    public Entity getOwner() {
+        return owner;
+    }
+
 }

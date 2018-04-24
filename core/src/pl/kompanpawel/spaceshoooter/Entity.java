@@ -1,12 +1,15 @@
 package pl.kompanpawel.spaceshoooter;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-public class Entity {
+public abstract class Entity {
 
     private Vector2 velocity;
     private Vector2 location;
     private int acceleration;
+
+    public abstract void draw(SpriteBatch batch, float delta);
 
     public Vector2 getVelocity() {
         return velocity;
