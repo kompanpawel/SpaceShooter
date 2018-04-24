@@ -1,8 +1,8 @@
 package pl.kompanpawel.spaceshoooter;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
@@ -11,26 +11,27 @@ import java.util.ArrayList;
 
 public class GameScreen implements Screen {
 
-    Texture xWing;
-    Texture background;
-    Texture laserTexture;
+    private Texture background;
+    private Texture laserTexture;
 
 
     public static final float laserSpeed = 500;
 
-    float screenWidth = 0;
-    float screenHeight = 0;
+    private float screenWidth = 0;
+    private float screenHeight = 0;
 
-    Vector2 shipLocation = new Vector2(0,0);
+    private Vector2 shipLocation = new Vector2(0,0);
 
 
-    ArrayList<Laser> laserManager = new ArrayList<Laser>();
+    private ArrayList<Laser> laserManager = new ArrayList<Laser>();
 
-    SpaceShoooter game;
+    private SpaceShoooter game;
+    private PlayerShip playerShip = new PlayerShip();
 
     public GameScreen(SpaceShoooter game) {
         this.game = game;
     }
+
 
     @Override
     public void show() {
@@ -42,36 +43,13 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        if((Gdx.input.isKeyPressed(Input.Keys.UP)) && (shipLocation.y < (screenHeight - xWing.getHeight()-5))) {
-            shipLocation.y += speed * Gdx.graphics.getDeltaTime();
-        }
-
-        if((Gdx.input.isKeyPressed(Input.Keys.DOWN)) && (shipLocation.y > 5)) {
-            shipLocation.y -= speed * Gdx.graphics.getDeltaTime();
-        }
-
-        if((Gdx.input.isKeyPressed(Input.Keys.LEFT)) && (shipLocation.x > 5)) {
-            shipLocation.x -= speed * Gdx.graphics.getDeltaTime();
-        }
-
-        if((Gdx.input.isKeyPressed(Input.Keys.RIGHT)) && (shipLocation.x < (screenWidth - xWing.getWidth()-5))) {
-            shipLocation.x += speed * Gdx.graphics.getDeltaTime();
-        }
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            Laser laser = new Laser(shipLocation, new Vector2(laserSpeed * Gdx.graphics.getDeltaTime(),0));
-            laserManager.add(laser);
-        }
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
-            /* exit to menu */
-        }
+        playerShip.keyboard();
         Gdx.gl.glClearColor(1,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         game.batch.begin();
         game.batch.draw(background,0,0);
-        game.batch.draw(xWing,shipLocation.x, shipLocation.y);
+        playerShip.drawShip(game.batch);
 
         int count = 0;
         while(count < laserManager.size()) {
@@ -79,10 +57,10 @@ public class GameScreen implements Screen {
             currentLaser.update();
             count++;
             if(count % 2 == 0) {
-                game.batch.draw(laserTexture, currentLaser.laserLocation1.x, currentLaser.laserLocation1.y);
+                //game.batch.draw(laserTexture, currentLaser.laserLocation1.x, currentLaser.laserLocation1.y);
             }
             else {
-                game.batch.draw(laserTexture, currentLaser.laserLocation1.x, (currentLaser.laserLocation1.y + xWing.getHeight() - 6));
+                //game.batch.draw(laserTexture, currentLaser.laserLocation1.x, (currentLaser.laserLocation1.y + xWing.getHeight() - 6));
             }
         }
         game.batch.end();

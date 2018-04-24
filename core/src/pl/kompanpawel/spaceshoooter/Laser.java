@@ -9,7 +9,7 @@ public class Laser extends Entity{
     private Vector2 laserVelocity;
     private boolean isValid = true;
 
-    Texture laser;
+    private Texture laser;
     public Laser(Vector2 sentLocation, Vector2 sentVelocity) {
         laserLocation = new Vector2(sentLocation.x, sentLocation.y);
         laserVelocity = new Vector2(sentVelocity.x, sentVelocity.y);
@@ -18,7 +18,7 @@ public class Laser extends Entity{
     }
 
     public void update() {
-        if(isValid == false) {return;}
+        if(!isValid) {return;}
         laserLocation.x += laserVelocity.x;
         laserLocation.y += laserVelocity.y;
         if((laserLocation.x < 0 - laser.getWidth()) && (laserLocation.x > Gdx.graphics.getWidth())) {
