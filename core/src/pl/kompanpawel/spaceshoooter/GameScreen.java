@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen implements Screen {
 
@@ -15,11 +16,15 @@ public class GameScreen implements Screen {
 
     private SpaceShoooter game;
     private PlayerShip playerShip = new PlayerShip();
+    private Enemy enemy1 = (Enemy) EntityFactory.factorTIE1();
+    private Enemy enemy2 = (Enemy) EntityFactory.factorTIE2();
     private EntityManager entityManager = EntityManager.getInstance();
 
     GameScreen(SpaceShoooter game) {
         this.game = game;
         entityManager.addEntity(playerShip);
+        entityManager.addEntity(enemy1);
+        entityManager.addEntity(enemy2);
     }
 
 
@@ -35,6 +40,8 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         playerShip.keyboard();
+        enemy1.fire();
+        enemy2.fire();
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setScreen(new MainMenu(game));
         }

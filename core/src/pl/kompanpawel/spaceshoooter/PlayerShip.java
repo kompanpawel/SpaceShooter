@@ -25,7 +25,7 @@ public class PlayerShip extends Entity {
         this.setLocation(new Vector2(20, Gdx.graphics.getHeight() / 2));
         this.setVelocity(new Vector2 (200,200));
 
-        }
+    }
 
 
     public void keyboard() {
@@ -48,9 +48,9 @@ public class PlayerShip extends Entity {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             Laser laser;
             if(shootTop) {
-                laser = new Laser (this ,getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(400 * Gdx.graphics.getDeltaTime(),0 ));
+                laser = new Laser (this ,getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(10 ,0 ));
             } else {
-                laser = new Laser (this ,getLocation().cpy(), new Vector2(400 * Gdx.graphics.getDeltaTime(),0 ));
+                laser = new Laser (this ,getLocation().cpy(), new Vector2(10 ,0 ));
             }
             shootTop = !shootTop;
             EntityManager.getInstance().addEntity(laser);
