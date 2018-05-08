@@ -23,8 +23,7 @@ public class GameScreen implements Screen {
     GameScreen(SpaceShoooter game) {
         this.game = game;
         entityManager.addEntity(playerShip);
-        entityManager.addEntity(enemy1);
-        entityManager.addEntity(enemy2);
+        Space.getInstance().addEnemies();
     }
 
 
@@ -40,13 +39,16 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         playerShip.keyboard();
-        enemy1.fire();
-        enemy2.fire();
-        enemy1.update();
-        enemy2.update();
+        Space.getInstance().enemyMovement();
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setScreen(new MainMenu(game));
+            EntityManager.getInstance().removeAllEntities();
         }
+        if(playerShip.getHealth() <=0) {
+            game.setScreen(new MainMenu(game));
+            EntityManager.getInstance().removeAllEntities();
+        }
+        Space.getInstance().destroyEnemy();
         Gdx.gl.glClearColor(1,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         for(Entity e: entityManager.getEntities()) {

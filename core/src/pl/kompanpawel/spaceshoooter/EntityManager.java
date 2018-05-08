@@ -48,4 +48,6 @@ public class EntityManager {
     public void removeEntity(Entity e) {
         entityToRemove.add(e);
     }
+
+    public void removeAllEntities() { entityToRemove.addAll(entitySet);}
 }

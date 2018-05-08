@@ -19,13 +19,31 @@ public class PlayerShip extends Entity {
     private int health;
 
     private boolean shootTop = true;
+    private boolean isDead = false;
 
 
     public PlayerShip() {
         xWing = SpaceShoooter.assetManager.get("xwing.png");
         this.setLocation(new Vector2(20, Gdx.graphics.getHeight() / 2));
         this.setVelocity(new Vector2 (200,200));
+        health = 5;
+    }
 
+    public void getHited() {
+        health -= 1;
+    }
+
+    public void destroyed() {
+        isDead = true;
+        EntityManager.getInstance().removeEntity(this);
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     public int getWidth() {

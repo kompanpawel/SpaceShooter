@@ -24,24 +24,30 @@ public class Enemy extends Entity {
 
     private boolean canShoot = true;
     private boolean changeDir = true;
+    private boolean isDead = false;
 
 
 
-    public Enemy(Vector2 location, Vector2 velocity) {
-        tie = SpaceShoooter.assetManager.get("rsz_tie_fighter.png");
-        this.setLocation(location);
-        this.setVelocity(velocity);
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("coś");
-                changeDir = !changeDir;
-            }
-        },2000, 2000);
+    public Enemy(int type, Vector2 location, Vector2 velocity) {
+        if(type == 1) {
+            tie = SpaceShoooter.assetManager.get("rsz_tie_fighter.png");
+            this.setLocation(location);
+            this.setVelocity(velocity);
+            this.setHealth(1);
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if(isDead) {return;}
+                    System.out.println("coś");
+                    changeDir = !changeDir;
+                }
+            }, 2000, 2000);
+        }
     }
 
     public void fire() {
         if(!canShoot) {return;}
+        if(isDead) {return;}
         Laser laser;
         laser = new Laser (this ,getLocation().cpy().add(-50, tie.getHeight()/2 - 5), new Vector2(-10,0 ));
         EntityManager.getInstance().addEntity(laser);
@@ -55,6 +61,7 @@ public class Enemy extends Entity {
     }
 
     public void update() {
+        if(isDead) {return;}
         if(changeDir && (getLocation().y < (Gdx.graphics.getHeight() - tie.getHeight() - 5)))
             this.getLocation().y += this.getVelocity().y * Gdx.graphics.getDeltaTime();
         else if(!changeDir && (getLocation().y > 5))
@@ -68,4 +75,26 @@ public class Enemy extends Entity {
     public int getHeight() {
         return tie.getHeight();
     }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void getHited() {
+        health -= 1;
+    }
+
+    public void destroyed() {
+        isDead = true;
+        EntityManager.getInstance().removeEntity(this);
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
 }
+
