@@ -42,12 +42,17 @@ public class GameScreen implements Screen {
         playerShip.keyboard();
         enemy1.fire();
         enemy2.fire();
+        enemy1.update();
+        enemy2.update();
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setScreen(new MainMenu(game));
         }
         Gdx.gl.glClearColor(1,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+        for(Entity e: entityManager.getEntities()) {
+            if(e instanceof Laser)
+                Space.getInstance().laserCollisions((Laser)e);
+        }
         game.batch.begin();
         game.batch.draw(background,0,0);
         entityManager.draw(game.batch, delta);

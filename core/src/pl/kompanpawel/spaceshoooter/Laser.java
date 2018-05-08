@@ -48,8 +48,23 @@ public class Laser extends Entity{
         update();
     }
 
+    public void onHit(Vector2 pos) {
+        EntityManager.getInstance().removeEntity(this);
+    }
+
+    public void hit(Entity e) {
+        onHit(e.getLocation());
+    }
+
     public Entity getOwner() {
         return owner;
     }
 
+    public int getWidth() {
+        return laser.getWidth();
+    }
+
+    public int getHeight() {
+        return laser.getHeight();
+    }
 }

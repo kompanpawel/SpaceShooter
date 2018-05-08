@@ -15,7 +15,8 @@ public class PlayerShip extends Entity {
     }
 
     private Texture xWing;
-    private int PlayerSpeed = 20;
+
+    private int health;
 
     private boolean shootTop = true;
 
@@ -25,6 +26,14 @@ public class PlayerShip extends Entity {
         this.setLocation(new Vector2(20, Gdx.graphics.getHeight() / 2));
         this.setVelocity(new Vector2 (200,200));
 
+    }
+
+    public int getWidth() {
+        return xWing.getWidth();
+    }
+
+    public int getHeight() {
+        return xWing.getHeight();
     }
 
 
@@ -59,14 +68,5 @@ public class PlayerShip extends Entity {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             /* exit to menu */
         }
-    }
-
-
-    public int getPlayerSpeed() {
-        return PlayerSpeed;
-    }
-
-    public void setPlayerSpeed(int playerSpeed) {
-        PlayerSpeed = playerSpeed;
     }
 }

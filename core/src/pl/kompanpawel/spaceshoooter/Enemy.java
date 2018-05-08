@@ -20,8 +20,10 @@ public class Enemy extends Entity {
     private Entity owner;
 
     private int type;
+    private int health;
 
     private boolean canShoot = true;
+    private boolean changeDir = true;
 
 
 
@@ -29,12 +31,19 @@ public class Enemy extends Entity {
         tie = SpaceShoooter.assetManager.get("rsz_tie_fighter.png");
         this.setLocation(location);
         this.setVelocity(velocity);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("coś");
+                changeDir = !changeDir;
+            }
+        },2000, 2000);
     }
 
     public void fire() {
         if(!canShoot) {return;}
         Laser laser;
-        laser = new Laser (this ,getLocation().cpy().add(0, tie.getHeight()/2 - 5), new Vector2(-10,0 ));
+        laser = new Laser (this ,getLocation().cpy().add(-50, tie.getHeight()/2 - 5), new Vector2(-10,0 ));
         EntityManager.getInstance().addEntity(laser);
         canShoot = false;
         new Timer().schedule(new TimerTask() {
@@ -46,6 +55,17 @@ public class Enemy extends Entity {
     }
 
     public void update() {
+        if(changeDir && (getLocation().y < (Gdx.graphics.getHeight() - tie.getHeight() - 5)))
+            this.getLocation().y += this.getVelocity().y * Gdx.graphics.getDeltaTime();
+        else if(!changeDir && (getLocation().y > 5))
+            this.getLocation().y -= this.getVelocity().y * Gdx.graphics.getDeltaTime();
+    }
 
+    public int getWidth() {
+        return tie.getWidth();
+    }
+
+    public int getHeight() {
+        return tie.getHeight();
     }
 }
