@@ -9,44 +9,21 @@ public class Space {
     private EntityManager entityManager = EntityManager.getInstance();
 
 
-    private Enemy enemy1 = (Enemy) EntityFactory.factorTIE1();
-    private Enemy enemy2 = (Enemy) EntityFactory.factorTIE2();
-    private Enemy enemy3 = (Enemy) EntityFactory.factorTIE3();
-    private Enemy enemy4 = (Enemy) EntityFactory.factorTIE4();
-    private Enemy enemy5 = (Enemy) EntityFactory.factorTIE5();
 
     public void addEnemies() {
-        entityManager.addEntity(enemy1);
-        entityManager.addEntity(enemy2);
-        entityManager.addEntity(enemy3);
-        entityManager.addEntity(enemy4);
-        entityManager.addEntity(enemy5);
-    }
-
-    public void enemyMovement() {
-        enemy1.fire();
-        enemy2.fire();
-        enemy3.fire();
-        enemy4.fire();
-        enemy5.fire();
-        enemy1.update();
-        enemy2.update();
-        enemy3.update();
-        enemy4.update();
-        enemy5.update();
+        entityManager.addEntity(EntityFactory.factorTIE1());
+        entityManager.addEntity(EntityFactory.factorTIE2());
+        entityManager.addEntity(EntityFactory.factorTIE3());
+        entityManager.addEntity(EntityFactory.factorTIE4());
+        entityManager.addEntity(EntityFactory.factorTIE5());
     }
 
     public void destroyEnemy() {
-        if(enemy1.getHealth()<=0)
-            enemy1.destroyed();
-        if(enemy2.getHealth()<=0)
-            enemy2.destroyed();
-        if(enemy3.getHealth()<=0)
-            enemy3.destroyed();
-        if(enemy4.getHealth()<=0)
-            enemy4.destroyed();
-        if(enemy5.getHealth()<=0)
-            enemy5.destroyed();
+        for (Entity ent : entityManager.getEntities()) {
+            if(ent instanceof Enemy)
+                if(((Enemy) ent).getHealth()<=0)
+                    ((Enemy) ent).destroyed();
+        }
     }
 
     public void laserCollisions(Laser laser) {

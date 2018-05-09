@@ -5,19 +5,20 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen implements Screen {
 
-    private Texture background;
+    private Texture background1;
+    private Texture background2;
 
     private float screenWidth = 0;
     private float screenHeight = 0;
 
+    private int bgx1 = 0;
+    private int bgx2;
+
     private SpaceShoooter game;
     private PlayerShip playerShip = new PlayerShip();
-    private Enemy enemy1 = (Enemy) EntityFactory.factorTIE1();
-    private Enemy enemy2 = (Enemy) EntityFactory.factorTIE2();
     private EntityManager entityManager = EntityManager.getInstance();
 
     GameScreen(SpaceShoooter game) {
@@ -27,19 +28,32 @@ public class GameScreen implements Screen {
     }
 
 
+    private void background() {
+        bgx1 -= 1;
+        bgx2 -= 1;
 
+        if(bgx1 == -background1.getWidth()){
+            System.out.println("cofam");
+            bgx1 = background2.getWidth();
+        }
+
+        if(bgx2 == -background2.getWidth())
+            bgx2 = background1.getWidth();
+    }
     @Override
     public void show() {
         screenWidth = Gdx.graphics.getWidth();
         screenHeight= Gdx.graphics.getHeight();
 
-        background = new Texture("space.gif");
+        background1 = new Texture("space.gif");
+        background2 = new Texture("space.gif");
+
+        bgx2 = background1.getWidth();
     }
 
     @Override
     public void render(float delta) {
         playerShip.keyboard();
-        Space.getInstance().enemyMovement();
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setScreen(new MainMenu(game));
             EntityManager.getInstance().removeAllEntities();
@@ -55,8 +69,11 @@ public class GameScreen implements Screen {
             if(e instanceof Laser)
                 Space.getInstance().laserCollisions((Laser)e);
         }
+
+        background();
         game.batch.begin();
-        game.batch.draw(background,0,0);
+        game.batch.draw(background1,bgx1,0);
+        game.batch.draw(background2, bgx2,0);
         entityManager.draw(game.batch, delta);
         game.batch.end();
     }

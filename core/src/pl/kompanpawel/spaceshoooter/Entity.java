@@ -11,6 +11,8 @@ public abstract class Entity {
 
     public abstract void draw(SpriteBatch batch, float delta);
 
+    public void dispose() {}
+
     public Vector2 getVelocity() {
         return velocity;
     }

@@ -24,6 +24,8 @@ public class EntityManager {
 
     public void draw(SpriteBatch batch, float delta) {
         if(!entityToRemove.isEmpty()) {
+            for(Entity e : entityToRemove)
+                e.dispose();
             entitySet.removeAll(entityToRemove);
             entityToRemove.clear();
         }
@@ -38,7 +40,7 @@ public class EntityManager {
     }
 
     public void addEntity(Entity ent) {
-        entitySet.add(ent);
+        entityToAdd.add(ent);
     }
 
     public Set<Entity> getEntities() {

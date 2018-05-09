@@ -13,6 +13,8 @@ public class Enemy extends Entity {
 
     @Override
     public void draw(SpriteBatch batch, float delta) {
+        update();
+        fire();
         batch.draw(tie, this.getLocation().x, this.getLocation().y);
     }
 
@@ -21,6 +23,9 @@ public class Enemy extends Entity {
 
     private int type;
     private int health;
+
+    private Timer timer;
+    private TimerTask movmentTask;
 
     private boolean canShoot = true;
     private boolean changeDir = true;
@@ -34,14 +39,16 @@ public class Enemy extends Entity {
             this.setLocation(location);
             this.setVelocity(velocity);
             this.setHealth(1);
-            new Timer().schedule(new TimerTask() {
+            timer = new Timer();
+            movmentTask = new TimerTask() {
                 @Override
                 public void run() {
                     if(isDead) {return;}
-                    System.out.println("coś");
+                    System.out.println(isDead());
                     changeDir = !changeDir;
                 }
-            }, 2000, 2000);
+            };
+            timer.schedule(movmentTask, 2000, 2000);
         }
     }
 
@@ -52,7 +59,7 @@ public class Enemy extends Entity {
         laser = new Laser (this ,getLocation().cpy().add(-50, tie.getHeight()/2 - 5), new Vector2(-10,0 ));
         EntityManager.getInstance().addEntity(laser);
         canShoot = false;
-        new Timer().schedule(new TimerTask() {
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 canShoot = true;
@@ -87,9 +94,14 @@ public class Enemy extends Entity {
     public void getHited() {
         health -= 1;
     }
+    @Override
+    public void dispose() {
+        isDead = true;
+        movmentTask.cancel();
+        timer.cancel();
+    }
 
     public void destroyed() {
-        isDead = true;
         EntityManager.getInstance().removeEntity(this);
     }
 
