@@ -15,17 +15,44 @@ public class PlayerShip extends Entity {
     }
 
     private Texture xWing;
-    private int PlayerSpeed = 20;
+
+    private int health;
 
     private boolean shootTop = true;
+    private boolean isDead = false;
 
 
     public PlayerShip() {
         xWing = SpaceShoooter.assetManager.get("xwing.png");
         this.setLocation(new Vector2(20, Gdx.graphics.getHeight() / 2));
         this.setVelocity(new Vector2 (200,200));
+        health = 5;
+    }
 
-        }
+    public void getHited() {
+        health -= 1;
+    }
+
+    public void destroyed() {
+        isDead = true;
+        EntityManager.getInstance().removeEntity(this);
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getWidth() {
+        return xWing.getWidth();
+    }
+
+    public int getHeight() {
+        return xWing.getHeight();
+    }
 
 
     public void keyboard() {
@@ -48,9 +75,9 @@ public class PlayerShip extends Entity {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             Laser laser;
             if(shootTop) {
-                laser = new Laser (this ,getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(400 * Gdx.graphics.getDeltaTime(),0 ));
+                laser = new Laser (this ,getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(10 ,0 ));
             } else {
-                laser = new Laser (this ,getLocation().cpy(), new Vector2(400 * Gdx.graphics.getDeltaTime(),0 ));
+                laser = new Laser (this ,getLocation().cpy(), new Vector2(10 ,0 ));
             }
             shootTop = !shootTop;
             EntityManager.getInstance().addEntity(laser);
@@ -59,14 +86,5 @@ public class PlayerShip extends Entity {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             /* exit to menu */
         }
-    }
-
-
-    public int getPlayerSpeed() {
-        return PlayerSpeed;
-    }
-
-    public void setPlayerSpeed(int playerSpeed) {
-        PlayerSpeed = playerSpeed;
     }
 }
