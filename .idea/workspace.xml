@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ddecb55a-5b1e-4c34-9c0a-6957adbee96f" name="Default" comment="">
-      <change beforePath="" afterPath="$APPLICATION_CONFIG_DIR$/options/find.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/core/assets/laserRed13.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/core/assets/rsz_tie_fighter.png" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Laser.java" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Laser.java" />
     </list>
     <ignored path="$PROJECT_DIR$/core/.gradle/" />
     <ignored path="$PROJECT_DIR$/core/build/" />
@@ -179,8 +174,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="kompanpawel &lt;pawelmiskiewicz14@wp.pl&gt;" />
         <option value="kompanpawel" />
+        <option value="kompanpawel &lt;pawelmiskiewicz14@wp.pl&gt;" />
       </list>
     </option>
     <option name="ROOT_SYNC" value="SYNC" />
@@ -1175,7 +1170,7 @@
       <workItem from="1525794386807" duration="15032000" />
       <workItem from="1525820543221" duration="322000" />
       <workItem from="1525863440566" duration="3504000" />
-      <workItem from="1526030412264" duration="200000" />
+      <workItem from="1526030412264" duration="240000" />
     </task>
     <task id="LOCAL-00001" summary="intelij">
       <created>1522007083455</created>
@@ -1247,11 +1242,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525866103296</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="v0.3.8 - small refactor, moving background">
+      <created>1526030649953</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1526030649953</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76380000" />
+    <option name="totallyTimeSpent" value="76420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
