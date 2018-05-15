@@ -17,6 +17,7 @@ public class MainMenu implements Screen {
     private Stage stage;
     private Table table;
     private TextButton playButton;
+    private TextButton coopButton;
 
     Texture background;
 
@@ -30,14 +31,21 @@ public class MainMenu implements Screen {
 
     @Override
     public void show() {
-        background = new Texture("starfield.png");
+        background = new Texture("Parallax100.png");
         stage = new Stage(new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
 
         playButton = new TextButton("Play",  game.assetManager.get("uiskin.json", Skin.class));
+        coopButton = new TextButton("Co-op play", game.assetManager.get("uiskin.json", Skin.class));
         playButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.setScreen(new GameScreen(game));
+                game.setScreen(new GameScreen(game,1));
+            }
+        });
+        coopButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                game.setScreen(new GameScreen(game, 2));
             }
         });
         table = new Table(game.assetManager.get("uiskin.json", Skin.class));
@@ -46,7 +54,8 @@ public class MainMenu implements Screen {
         Label title = new Label("SpaceShoooter", game.assetManager.get("uiskin.json", Skin.class));
         //table.debug();
         table.add(title).row();
-        table.add(playButton).expand().width(400).height(50);
+        table.add(playButton).expand().width(300).height(50);
+        table.add(coopButton).expand().width(300).height(50);
         table.setTouchable(Touchable.childrenOnly);
         Gdx.input.setInputProcessor(stage);
         stage.addActor(table);
@@ -58,10 +67,12 @@ public class MainMenu implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         game.batch.begin();
+        game.batch.draw(background, 0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        game.batch.end();
         stage.act(delta);
         stage.draw();
-        //game.batch.draw(background, 0,0);
-        game.batch.end();
+
+
 
     }
 

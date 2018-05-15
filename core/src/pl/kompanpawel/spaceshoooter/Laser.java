@@ -18,6 +18,8 @@ public class Laser extends Entity{
         this.setVelocity(sentVelocity);
         if(owner instanceof PlayerShip)
             laser = SpaceShoooter.assetManager.get("laserRed13.png");
+        else if (owner instanceof  SecondShip)
+            laser = SpaceShoooter.assetManager.get("laserRed13.png");
         else if(owner instanceof Enemy)
             laser = SpaceShoooter.assetManager.get("laserGreen03.png");
         this.owner = owner;

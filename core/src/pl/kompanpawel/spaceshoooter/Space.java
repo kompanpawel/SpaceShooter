@@ -40,13 +40,25 @@ public class Space {
                     return;
                 }
             }
+            if (ent instanceof SecondShip) {
+                SecondShip secondShip = (SecondShip) ent;
+                if(secondShip.isDead())
+                    continue;
+                Rectangle playerShipRect = new Rectangle(Math.round(secondShip.getLocation().x), Math.round(secondShip.getLocation().y), secondShip.getWidth()-10, secondShip.getHeight());
+                Rectangle laserRect = new Rectangle(Math.round(laser.getLocation().x), Math.round(laser.getLocation().y), laser.getWidth(), laser.getHeight());
+                if (playerShipRect.overlaps(laserRect) && laser.getOwner() instanceof Enemy) {
+                    laser.hit(secondShip);
+                    secondShip.getHited();
+                    return;
+                }
+            }
             if (ent instanceof Enemy) {
                 Enemy enemy = (Enemy) ent;
                 if(enemy.isDead())
                     continue;
                 Rectangle enemyRect = new Rectangle(Math.round(enemy.getLocation().x), Math.round(enemy.getLocation().y),enemy.getWidth()-10, enemy.getHeight());
                 Rectangle laserRect = new Rectangle(Math.round(laser.getLocation().x), Math.round(laser.getLocation().y), laser.getWidth(), laser.getHeight());
-                if(enemyRect.overlaps(laserRect) && laser.getOwner() instanceof PlayerShip) {
+                if((enemyRect.overlaps(laserRect) && laser.getOwner() instanceof PlayerShip) || enemyRect.overlaps(laserRect) && laser.getOwner() instanceof SecondShip) {
                     laser.hit(enemy);
                     enemy.getHited();
                     return;

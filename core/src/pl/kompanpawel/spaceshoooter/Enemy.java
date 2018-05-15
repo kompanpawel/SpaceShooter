@@ -44,7 +44,6 @@ public class Enemy extends Entity {
                 @Override
                 public void run() {
                     if(isDead) {return;}
-                    System.out.println(isDead());
                     changeDir = !changeDir;
                 }
             };
