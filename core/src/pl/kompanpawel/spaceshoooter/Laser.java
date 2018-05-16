@@ -33,19 +33,19 @@ public class Laser extends Entity{
         }
         this.getLocation().x += this.getVelocity().x;
         this.getLocation().y += this.getVelocity().y;
-        if((getLocation().x < 0 - laser.getWidth()) || (getLocation().x > Gdx.graphics.getWidth())) {
+        if((getLocation().x < 0 - laser.getWidth()) || (getLocation().x > SpaceShoooter.getWidth())) {
             isValid = false;
             return;
         }
-        if((getLocation().y < 0 + laser.getHeight()) || (getLocation().y > Gdx.graphics.getHeight())) {
+        if((getLocation().y < 0 + laser.getHeight()) || (getLocation().y > SpaceShoooter.getHeight())) {
             isValid = false;
             return;
         }
     }
 
     @Override
-    public void draw(SpriteBatch batch, float delta) {
-        batch.draw(laser, getLocation().x, getLocation().y);
+    public void draw(SpriteBatch spriteBatch, float delta) {
+        spriteBatch.draw(laser, getLocation().x, getLocation().y);
         update();
     }
 

@@ -21,7 +21,7 @@ public class Enemy extends Entity {
     private Texture tie;
     private Entity owner;
 
-    private int type;
+    private int enemyType;
     private int health;
 
     private Timer timer;
@@ -33,12 +33,15 @@ public class Enemy extends Entity {
 
 
 
+
+
     public Enemy(int type, Vector2 location, Vector2 velocity) {
         if(type == 1) {
             tie = SpaceShoooter.assetManager.get("rsz_tie_fighter.png");
             this.setLocation(location);
             this.setVelocity(velocity);
             this.setHealth(1);
+            enemyType = type;
             timer = new Timer();
             movmentTask = new TimerTask() {
                 @Override
@@ -68,7 +71,7 @@ public class Enemy extends Entity {
 
     public void update() {
         if(isDead) {return;}
-        if(changeDir && (getLocation().y < (Gdx.graphics.getHeight() - tie.getHeight() - 5)))
+        if(changeDir && (getLocation().y < (SpaceShoooter.getHeight() - tie.getHeight() - 5)))
             this.getLocation().y += this.getVelocity().y * Gdx.graphics.getDeltaTime();
         else if(!changeDir && (getLocation().y > 5))
             this.getLocation().y -= this.getVelocity().y * Gdx.graphics.getDeltaTime();
@@ -90,8 +93,15 @@ public class Enemy extends Entity {
         this.health = health;
     }
 
-    public void getHited() {
+    public void getHited(Entity e) {
         health -= 1;
+        if(health<=0 && enemyType == 1) {
+            if(e instanceof PlayerShip) {
+                PlayerShip p = (PlayerShip) e;
+                p.addScore(10);
+            }
+            destroyed();
+        }
     }
     @Override
     public void dispose() {
@@ -101,8 +111,9 @@ public class Enemy extends Entity {
     }
 
     public void destroyed() {
-        EntityManager.getInstance().removeEntity(this);
+            EntityManager.getInstance().removeEntity(this);
     }
+
 
     public boolean isDead() {
         return isDead;

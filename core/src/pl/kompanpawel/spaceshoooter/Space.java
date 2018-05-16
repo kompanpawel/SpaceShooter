@@ -17,15 +17,16 @@ public class Space {
         entityManager.addEntity(EntityFactory.factorTIE4());
         entityManager.addEntity(EntityFactory.factorTIE5());
     }
-
+/*
     public void destroyEnemy() {
         for (Entity ent : entityManager.getEntities()) {
             if(ent instanceof Enemy)
-                if(((Enemy) ent).getHealth()<=0)
+                if(((Enemy) ent).getHealth()<=0) {
                     ((Enemy) ent).destroyed();
+                }
         }
     }
-
+*/
     public void laserCollisions(Laser laser) {
         for (Entity ent : entityManager.getEntities()) {
             if (ent instanceof PlayerShip) {
@@ -60,7 +61,7 @@ public class Space {
                 Rectangle laserRect = new Rectangle(Math.round(laser.getLocation().x), Math.round(laser.getLocation().y), laser.getWidth(), laser.getHeight());
                 if((enemyRect.overlaps(laserRect) && laser.getOwner() instanceof PlayerShip) || enemyRect.overlaps(laserRect) && laser.getOwner() instanceof SecondShip) {
                     laser.hit(enemy);
-                    enemy.getHited();
+                    enemy.getHited(laser.getOwner());
                     return;
                 }
             }
