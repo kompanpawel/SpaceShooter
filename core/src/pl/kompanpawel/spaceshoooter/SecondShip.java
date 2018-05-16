@@ -6,9 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-
-public class PlayerShip extends Entity {
-
+public class SecondShip extends Entity {
     @Override
     public void draw(SpriteBatch batch, float delta) {
         batch.draw(xWing, getLocation().x, getLocation().y);
@@ -22,9 +20,9 @@ public class PlayerShip extends Entity {
     private boolean isDead = false;
 
 
-    public PlayerShip() {
+    public SecondShip() {
         xWing = SpaceShoooter.assetManager.get("xwing.png");
-        this.setLocation(new Vector2(20, Gdx.graphics.getHeight() / 2));
+        this.setLocation(new Vector2(20, (Gdx.graphics.getHeight() / 2)+100));
         this.setVelocity(new Vector2 (200,200));
         health = 5;
     }
@@ -56,23 +54,23 @@ public class PlayerShip extends Entity {
 
 
     public void keyboard() {
-        if ((Gdx.input.isKeyPressed(Input.Keys.UP)) && (getLocation().y < (Gdx.graphics.getHeight() - xWing.getHeight() - 5))) {
+        if ((Gdx.input.isKeyPressed(Input.Keys.W)) && (getLocation().y < (Gdx.graphics.getHeight() - xWing.getHeight() - 5))) {
             getLocation().y += getVelocity().y * Gdx.graphics.getDeltaTime();
         }
 
-        if ((Gdx.input.isKeyPressed(Input.Keys.DOWN)) && (getLocation().y > 5)) {
+        if ((Gdx.input.isKeyPressed(Input.Keys.S)) && (getLocation().y > 5)) {
             getLocation().y -= getVelocity().y * Gdx.graphics.getDeltaTime();
         }
 
-        if ((Gdx.input.isKeyPressed(Input.Keys.LEFT)) && (getLocation().x > 5)) {
+        if ((Gdx.input.isKeyPressed(Input.Keys.A)) && (getLocation().x > 5)) {
             getLocation().x -= getVelocity().x * Gdx.graphics.getDeltaTime();
         }
 
-        if ((Gdx.input.isKeyPressed(Input.Keys.RIGHT)) && (getLocation().x < (Gdx.graphics.getWidth() - xWing.getWidth() - 5))) {
+        if ((Gdx.input.isKeyPressed(Input.Keys.D) && (getLocation().x < (Gdx.graphics.getWidth() - xWing.getWidth() - 5)))) {
             getLocation().x += getVelocity().x * Gdx.graphics.getDeltaTime();
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_RIGHT)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_LEFT)) {
             Laser laser;
             if(shootTop) {
                 laser = new Laser (this ,getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(10 ,0 ));
@@ -88,3 +86,4 @@ public class PlayerShip extends Entity {
         }
     }
 }
+

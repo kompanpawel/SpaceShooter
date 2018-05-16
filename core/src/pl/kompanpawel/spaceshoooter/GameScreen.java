@@ -14,17 +14,29 @@ public class GameScreen implements Screen {
     private float screenWidth = 0;
     private float screenHeight = 0;
 
+    private boolean isCoop = false;
+
     private int bgx1 = 0;
     private int bgx2;
 
     private SpaceShoooter game;
     private PlayerShip playerShip = new PlayerShip();
+    private SecondShip secondShip = new SecondShip();
     private EntityManager entityManager = EntityManager.getInstance();
 
-    GameScreen(SpaceShoooter game) {
-        this.game = game;
-        entityManager.addEntity(playerShip);
-        Space.getInstance().addEnemies();
+    GameScreen(SpaceShoooter game, int mode) {
+        if(mode == 1) {
+            this.game = game;
+            entityManager.addEntity(playerShip);
+            Space.getInstance().addEnemies();
+        }
+        else if(mode == 2) {
+            this.game = game;
+            entityManager.addEntity(playerShip);
+            entityManager.addEntity(secondShip);
+            Space.getInstance().addEnemies();
+            isCoop = true;
+        }
     }
 
 
@@ -54,6 +66,8 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         playerShip.keyboard();
+        if(isCoop)
+            secondShip.keyboard();
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setScreen(new MainMenu(game));
             EntityManager.getInstance().removeAllEntities();
@@ -95,7 +109,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void hide() {
-
+        System.out.println("coś");
     }
 
     @Override
