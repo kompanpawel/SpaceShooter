@@ -24,13 +24,13 @@ public class SpaceShoooter extends Game {
 		assetManager.load("laserRed13.png", Texture.class);
 		assetManager.load("laserGreen03.png", Texture.class);
 		assetManager.load("rsz_tie_fighter.png", Texture.class);
+		assetManager.load("executor_copy.png",Texture.class);
 		assetManager.finishLoading();
         font = new BitmapFont(Gdx.files.internal("default.fnt"), Gdx.files.internal("default.png"), false);
 		this.setScreen(new MainMenu(this));
 	}
-    public static float getWidth() {
-	    return camera.viewportWidth;
-    }
+
+    public static float getWidth() { return camera.viewportWidth; }
 
     public static float getHeight() {
 	    return camera.viewportHeight;

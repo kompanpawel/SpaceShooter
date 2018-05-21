@@ -25,4 +25,15 @@ public class GameUI {
         font.draw(spriteBatch,"Points: "+playerShip.getScore(), 10, camera.viewportHeight - 45);
         spriteBatch.end();
     }
+
+    public void draw(PlayerShip playerShip, PlayerShip secondShip) {
+        spriteBatch.begin();
+        font.draw(spriteBatch, "Player 1",10,camera.viewportHeight - 15);
+        font.draw(spriteBatch, "HP: "+ playerShip.getHealth(), 10, camera.viewportHeight - 30);
+        font.draw(spriteBatch,"Points: "+playerShip.getScore(), 10, camera.viewportHeight - 45);
+        font.draw(spriteBatch, "Player 2",10,45);
+        font.draw(spriteBatch, "HP: "+ secondShip.getHealth(), 10,  30);
+        font.draw(spriteBatch,"Points: "+secondShip.getScore(), 10, 15);
+        spriteBatch.end();
+    }
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class EntityManager {
     private static EntityManager ourInstance = new EntityManager();
@@ -18,8 +19,10 @@ public class EntityManager {
 
     private EntityManager() {
         entitySet = new HashSet<Entity>();
-        entityToAdd = new HashSet<Entity>();
-        entityToRemove = new HashSet<Entity>();
+        //entityToAdd = new HashSet<Entity>();
+        //entityToRemove = new HashSet<Entity>();
+        entityToAdd = ConcurrentHashMap.newKeySet();
+        entityToRemove = ConcurrentHashMap.newKeySet();
     }
 
     public void draw(SpriteBatch batch, float delta) {

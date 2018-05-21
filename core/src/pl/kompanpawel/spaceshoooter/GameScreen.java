@@ -5,6 +5,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen implements Screen {
 
@@ -20,15 +22,21 @@ public class GameScreen implements Screen {
     private int bgx2;
 
     private SpaceShoooter game;
-    private PlayerShip playerShip = new PlayerShip();
-    private SecondShip secondShip = new SecondShip();
+    private PlayerShip playerShip = new PlayerShip(1);
+    private PlayerShip secondShip = new PlayerShip(2);
     private EntityManager entityManager = EntityManager.getInstance();
+    private SpriteBatch spriteBatch;
+    private GameUI gameUI;
 
     GameScreen(SpaceShoooter game, int mode) {
         if(mode == 1) {
             this.game = game;
             entityManager.addEntity(playerShip);
+            playerShip.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 2));
             Space.getInstance().addEnemies();
+            setCamera();
+            setSprite();
+            gameUI = new GameUI(game);
         }
         else if(mode == 2) {
             this.game = game;
@@ -36,10 +44,19 @@ public class GameScreen implements Screen {
             entityManager.addEntity(secondShip);
             Space.getInstance().addEnemies();
             isCoop = true;
+            setCamera();
+            setSprite();
+            gameUI = new GameUI(game);
         }
     }
+    private void setCamera(){
+        SpaceShoooter.getCamera().setToOrtho(false, 1280,720);
+    }
 
-
+    private void setSprite() {
+        spriteBatch = new SpriteBatch();
+        spriteBatch.setProjectionMatrix(SpaceShoooter.getCamera().combined);
+    }
     private void background() {
         bgx1 -= 1;
         bgx2 -= 1;
@@ -54,8 +71,8 @@ public class GameScreen implements Screen {
     }
     @Override
     public void show() {
-        screenWidth = Gdx.graphics.getWidth();
-        screenHeight= Gdx.graphics.getHeight();
+        screenWidth = SpaceShoooter.getCamera().viewportWidth;
+        screenHeight= SpaceShoooter.getCamera().viewportHeight;
 
         background1 = new Texture("space.gif");
         background2 = new Texture("space.gif");
@@ -65,18 +82,16 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        playerShip.keyboard();
+        playerShip.keyboard(1);
         if(isCoop)
-            secondShip.keyboard();
+            secondShip.keyboard(2);
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setScreen(new MainMenu(game));
             EntityManager.getInstance().removeAllEntities();
         }
-        if(playerShip.getHealth() <=0) {
-            game.setScreen(new MainMenu(game));
-            EntityManager.getInstance().removeAllEntities();
+        if(Space.getInstance().getEnemyNumber()<=0) {
+            Space.getInstance().newWaveEnemies();
         }
-        Space.getInstance().destroyEnemy();
         Gdx.gl.glClearColor(1,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         for(Entity e: entityManager.getEntities()) {
@@ -85,11 +100,14 @@ public class GameScreen implements Screen {
         }
 
         background();
-        game.batch.begin();
-        game.batch.draw(background1,bgx1,0);
-        game.batch.draw(background2, bgx2,0);
-        entityManager.draw(game.batch, delta);
-        game.batch.end();
+        spriteBatch.begin();
+        spriteBatch.draw(background1,bgx1,0,background1.getWidth(),SpaceShoooter.getCamera().viewportHeight);
+        spriteBatch.draw(background2, bgx2,0, background2.getWidth(),SpaceShoooter.getCamera().viewportHeight);
+        entityManager.draw(spriteBatch, delta);
+        spriteBatch.end();
+        if(isCoop)
+            gameUI.draw(playerShip, secondShip);
+        gameUI.draw(playerShip);
     }
 
     @Override
@@ -109,7 +127,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void hide() {
-        System.out.println("coś");
+
     }
 
     @Override
