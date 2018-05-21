@@ -29,6 +29,17 @@ public class SpaceShoooter extends Game {
         font = new BitmapFont(Gdx.files.internal("default.fnt"), Gdx.files.internal("default.png"), false);
 		this.setScreen(new MainMenu(this));
 	}
+    public static float getWidth() {
+	    return camera.viewportWidth;
+    }
+
+    public static float getHeight() {
+	    return camera.viewportHeight;
+    }
+
+    public static OrthographicCamera getCamera() {
+	    return camera;
+    }
 
     public static float getWidth() { return camera.viewportWidth; }
 
