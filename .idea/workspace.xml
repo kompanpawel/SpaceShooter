@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddecb55a-5b1e-4c34-9c0a-6957adbee96f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/core/assets/starwars.fnt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/assets/starwars.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Laser.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Laser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/PlayerShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/PlayerShip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SecondShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SecondShip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Space.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Space.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/core/.gradle/" />
     <ignored path="$PROJECT_DIR$/core/build/" />
@@ -152,8 +146,8 @@
       <file leaf-file-name="Space.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Space.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
-              <caret line="106" column="79" lean-forward="true" selection-start-line="106" selection-start-column="79" selection-end-line="106" selection-end-column="79" />
+            <state relative-caret-position="527">
+              <caret line="131" column="37" lean-forward="true" selection-start-line="131" selection-start-column="37" selection-end-line="131" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2234#2448#0" expanded="true" />
@@ -175,27 +169,6 @@
                 <element signature="e#6125#6126#0" expanded="true" />
                 <element signature="e#6157#6158#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntityFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="69" column="105" selection-start-line="69" selection-start-column="105" selection-end-line="69" selection-end-column="105" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpaceShoooter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -1218,7 +1191,7 @@
       <workItem from="1526938681030" duration="7000" />
       <workItem from="1526939044968" duration="130000" />
       <workItem from="1526940578827" duration="668000" />
-      <workItem from="1526987341036" duration="13102000" />
+      <workItem from="1526987341036" duration="14131000" />
     </task>
     <task id="LOCAL-00001" summary="intelij">
       <created>1522007083455</created>
@@ -1262,15 +1235,28 @@
       <option name="project" value="LOCAL" />
       <updated>1526939159562</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="v0.5.5 - change collisions to polygon intersectors, improved enemy">
+      <created>1527018179636</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1527018179636</updated>
+    </task>
+    <task id="LOCAL-00008" summary="v0.5.5 - change collisions to polygon intersectors, improved enemy">
+      <created>1527018239532</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1527018239532</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99941000" />
+    <option name="totallyTimeSpent" value="100970000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1282,11 +1268,11 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32965517" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48242188" visible="true" weight="0.32413793" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48242188" visible="true" weight="0.32413793" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30729166" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30729166" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827586" />
       <window_info anchor="right" id="Gradle" order="7" />
@@ -1326,16 +1312,10 @@
     <MESSAGE value="v0.3 - first refactor of whole project, added some design patterns" />
     <MESSAGE value="v0.3.5 - refactoring nearly completed, ship reflying, lasers to do next" />
     <MESSAGE value="v0.5.0.1 - delete doubled methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.5.0.1 - delete doubled methods" />
+    <MESSAGE value="v0.5.5 - change collisions to polygon intersectors, improved enemy" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.5.5 - change collisions to polygon intersectors, improved enemy" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/MainMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1397,9 +1377,6 @@
           <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/xwing.jpg">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/Laser.java" />
     <entry file="file://$PROJECT_DIR$/desktop/src/pl/kompanpawel/spaceshoooter/desktop/DesktopLauncher.java">
@@ -1558,20 +1535,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/xwing.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/MainMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="41" column="40" lean-forward="true" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1662,10 +1629,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/xwing.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/X_Wing_Game_Fighter.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/MainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="41" column="40" lean-forward="true" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/xwing.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Space.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="106" column="79" lean-forward="true" selection-start-line="106" selection-start-column="79" selection-end-line="106" selection-end-column="79" />
+        <state relative-caret-position="527">
+          <caret line="131" column="37" lean-forward="true" selection-start-line="131" selection-start-column="37" selection-end-line="131" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2234#2448#0" expanded="true" />
