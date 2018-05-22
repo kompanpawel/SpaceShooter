@@ -34,8 +34,8 @@ public class PlayerShip extends Entity {
             xWing = SpaceShoooter.assetManager.get("xwing.png");
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 * 3));
             this.setVelocity(new Vector2(200, 200));
-            health = 50;
-            laserAmmo = 10;
+            health = 10;
+            //laserAmmo = 10;
             timer = new Timer();
 
         }
@@ -44,7 +44,7 @@ public class PlayerShip extends Entity {
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 ));
             this.setVelocity(new Vector2(200, 200));
             health = 5;
-            laserAmmo = 10;
+            //laserAmmo = 10;
             timer = new Timer();
         }
     }
@@ -99,7 +99,7 @@ public class PlayerShip extends Entity {
 
             if (Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_RIGHT)) {
                 if(isDead) {return;}
-                if(laserAmmo == 0) {return;}
+                //if(laserAmmo == 0) {return;}
                 Laser laser;
                 if (shootTop) {
                     laser = new Laser(this, 1, getLocation().cpy().add(0, xWing.getHeight() - 5), new Vector2(10, 0));
@@ -108,9 +108,9 @@ public class PlayerShip extends Entity {
                 }
                 shootTop = !shootTop;
                 EntityManager.getInstance().addEntity(laser);
-                laserAmmo--;
-                if(laserAmmo == 0)
-                    reload1();
+                //laserAmmo--;
+                //if(laserAmmo == 0)
+                   // reload1();
             }
 
         }
@@ -133,7 +133,7 @@ public class PlayerShip extends Entity {
 
             if (Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_LEFT)) {
                 if(isDead) {return;}
-                if(laserAmmo == 0) {return;}
+                //if(laserAmmo == 0) {return;}
                 Laser laser;
                 if(shootTop) {
                     laser = new Laser (this, 1, getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(10 ,0 ));
@@ -142,9 +142,9 @@ public class PlayerShip extends Entity {
                 }
                 shootTop = !shootTop;
                 EntityManager.getInstance().addEntity(laser);
-                laserAmmo--;
-                if(laserAmmo == 0)
-                    reload2();
+                //laserAmmo--;
+                //if(laserAmmo == 0)
+                    //reload2();
             }
         }
     }
