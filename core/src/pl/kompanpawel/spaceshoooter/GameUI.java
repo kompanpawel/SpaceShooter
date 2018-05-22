@@ -23,6 +23,10 @@ public class GameUI {
         font.draw(spriteBatch, "Player 1",10,camera.viewportHeight - 15);
         font.draw(spriteBatch, "HP: "+ playerShip.getHealth(), 10, camera.viewportHeight - 30);
         font.draw(spriteBatch,"Points: "+playerShip.getScore(), 10, camera.viewportHeight - 45);
+        if(playerShip.getLaserAmmo()>0)
+            font.draw(spriteBatch, "Shots: "+playerShip.getLaserAmmo(), 10, camera.viewportHeight - 60);
+        else
+            font.draw(spriteBatch, "Shots: deheating", 10, camera.viewportHeight - 60);
         spriteBatch.end();
     }
 
@@ -31,9 +35,17 @@ public class GameUI {
         font.draw(spriteBatch, "Player 1",10,camera.viewportHeight - 15);
         font.draw(spriteBatch, "HP: "+ playerShip.getHealth(), 10, camera.viewportHeight - 30);
         font.draw(spriteBatch,"Points: "+playerShip.getScore(), 10, camera.viewportHeight - 45);
-        font.draw(spriteBatch, "Player 2",10,45);
-        font.draw(spriteBatch, "HP: "+ secondShip.getHealth(), 10,  30);
-        font.draw(spriteBatch,"Points: "+secondShip.getScore(), 10, 15);
+        if(playerShip.getLaserAmmo()>0)
+            font.draw(spriteBatch, "Shots: "+playerShip.getLaserAmmo(), 10, camera.viewportHeight - 60);
+        else
+            font.draw(spriteBatch, "Shots: deheating", 10, camera.viewportHeight - 60);
+        font.draw(spriteBatch, "Player 2",10,60);
+        font.draw(spriteBatch, "HP: "+ secondShip.getHealth(), 10,  45);
+        font.draw(spriteBatch,"Points: "+secondShip.getScore(), 10, 30);
+        if(secondShip.getLaserAmmo()>0)
+            font.draw(spriteBatch, "Shots: "+secondShip.getLaserAmmo(), 10,  15);
+        else
+            font.draw(spriteBatch, "Shots: deheating", 10, 15);
         spriteBatch.end();
     }
 }

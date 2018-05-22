@@ -29,7 +29,8 @@ public class Space {
     private boolean stop = true;
 
     private Polygon execPoly;
-    private Rectangle enemyRect;
+    private Polygon enemyPoly;
+    private Polygon playerPoly;
 
 
     public static Space getInstance() { return instance; }
@@ -80,13 +81,13 @@ public class Space {
                 }
             },delay);
 
-        if(wave > 8 && level == 1) {
+        if(wave > 4 && level == 1) {
             type = 1;
             delay = 10000;
             wave = 0;
             level = 2;
         }
-        if(wave > 8 && level == 2)
+        if(wave > 4 && level == 2)
         {
             type = 2;
             delay = 10000;
@@ -103,10 +104,13 @@ public class Space {
                 PlayerShip playerShip = (PlayerShip) ent;
                 if(playerShip.isDead())
                     continue;
-                Rectangle playerShipRect = new Rectangle(Math.round(playerShip.getLocation().x), Math.round(playerShip.getLocation().y), playerShip.getWidth()-10, playerShip.getHeight());
-                Rectangle laserRect = new Rectangle(Math.round(laser.getLocation().x), Math.round(laser.getLocation().y), laser.getWidth(), laser.getHeight());
-                if (playerShipRect.overlaps(laserRect) && laser.getOwner() instanceof Enemy) {
+                playerPoly = new Polygon(new float[]{playerShip.getLocation().x, playerShip.getLocation().y,playerShip.getLocation().x + playerShip.getWidth(), playerShip.getLocation().y,playerShip.getLocation().x, playerShip.getLocation().y + playerShip.getHeight(), playerShip.getLocation().x + playerShip.getWidth(), playerShip.getLocation().y + playerShip.getHeight()});
+                Polygon laserPoly = new Polygon(new float[]{laser.getLocation().x, laser.getLocation().y,laser.getLocation().x +laser.getWidth(), laser.getLocation().y, laser.getLocation().x, laser.getLocation().y + laser.getHeight(), laser.getLocation().x + laser.getWidth(), laser.getLocation().y+laser.getHeight()});
+                if (Intersector.overlapConvexPolygons(playerPoly, laserPoly ) && laser.getOwner() instanceof Enemy) {
                     laser.hit(playerShip);
+                    System.out.println(playerShip.getLocation().x + playerShip.getWidth());
+                    System.out.println(playerShip.getLocation().y + playerShip.getHeight());
+
                     playerShip.getHited();
                     return;
                 }
@@ -119,12 +123,12 @@ public class Space {
                 if (((Enemy) ent).getEnemyType() == 2) {
                     execPoly = new Polygon(new float[]{enemy.getLocation().x + 348, enemy.getLocation().y + enemy.getHeight(), enemy.getLocation().x + 434, enemy.getLocation().y + enemy.getHeight() - 60, enemy.getLocation().x + 434, enemy.getLocation().y + enemy.getHeight() - 114, enemy.getLocation().x + 350, enemy.getLocation().y + enemy.getHeight() - 175, enemy.getLocation().x +3, enemy.getLocation().y + enemy.getHeight() - 97});
                 } else {
-                    enemyRect = new Rectangle(Math.round(enemy.getLocation().x), Math.round(enemy.getLocation().y),enemy.getWidth()-10, enemy.getHeight());
+                    enemyPoly = new Polygon(new float[]{enemy.getLocation().x, enemy.getLocation().y,enemy.getLocation().x + enemy.getWidth(), enemy.getLocation().y,enemy.getLocation().x, enemy.getLocation().y + enemy.getHeight(), enemy.getLocation().x + enemy.getWidth(), enemy.getLocation().y + enemy.getHeight()});
+                    //enemyRect = new Rectangle(Math.round(enemy.getLocation().x), Math.round(enemy.getLocation().y),enemy.getWidth()-10, enemy.getHeight());
                 }
                 Rectangle laserRect = new Rectangle(Math.round(laser.getLocation().x), Math.round(laser.getLocation().y), laser.getWidth(), laser.getHeight());
                 Polygon laserPoly = new Polygon(new float[]{laser.getLocation().x, laser.getLocation().y,laser.getLocation().x +laser.getWidth(), laser.getLocation().y, laser.getLocation().x, laser.getLocation().y + laser.getHeight(), laser.getLocation().x + laser.getWidth(), laser.getLocation().y+laser.getHeight()});
-
-                if((enemyRect!=null &&(enemyRect.overlaps(laserRect) && laser.getOwner() instanceof PlayerShip)) ||(execPoly!=null && (Intersector.overlapConvexPolygons(laserPoly,execPoly ) && laser.getOwner() instanceof PlayerShip) )) {
+                if((enemyPoly!=null &&(Intersector.overlapConvexPolygons(enemyPoly, laserPoly) && laser.getOwner() instanceof PlayerShip)) ||(execPoly!=null && (Intersector.overlapConvexPolygons(laserPoly,execPoly) && laser.getOwner() instanceof PlayerShip))) {
                     laser.hit(enemy);
                     enemy.getHited(laser.getOwner());
                     return;

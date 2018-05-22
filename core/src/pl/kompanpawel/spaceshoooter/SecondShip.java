@@ -73,9 +73,9 @@ public class SecondShip extends Entity {
         if (Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_LEFT)) {
             Laser laser;
             if(shootTop) {
-                laser = new Laser (this ,getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(10 ,0 ));
+                laser = new Laser (this ,1, getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(10 ,0 ));
             } else {
-                laser = new Laser (this ,getLocation().cpy(), new Vector2(10 ,0 ));
+                laser = new Laser (this ,1, getLocation().cpy(), new Vector2(10 ,0 ));
             }
             shootTop = !shootTop;
             EntityManager.getInstance().addEntity(laser);

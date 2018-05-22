@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class PlayerShip extends Entity {
 
@@ -18,6 +21,9 @@ public class PlayerShip extends Entity {
 
     private int health;
     private int score;
+    private int laserAmmo;
+
+    private Timer timer;
 
     private boolean shootTop = true;
     private boolean isDead = false;
@@ -28,13 +34,18 @@ public class PlayerShip extends Entity {
             xWing = SpaceShoooter.assetManager.get("xwing.png");
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 * 3));
             this.setVelocity(new Vector2(200, 200));
-            health = 5;
+            health = 50;
+            laserAmmo = 10;
+            timer = new Timer();
+
         }
         else if (player == 2) {
             xWing = SpaceShoooter.assetManager.get("xwing.png");
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 ));
             this.setVelocity(new Vector2(200, 200));
             health = 5;
+            laserAmmo = 10;
+            timer = new Timer();
         }
     }
 
@@ -88,14 +99,18 @@ public class PlayerShip extends Entity {
 
             if (Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_RIGHT)) {
                 if(isDead) {return;}
+                if(laserAmmo == 0) {return;}
                 Laser laser;
                 if (shootTop) {
-                    laser = new Laser(this, getLocation().cpy().add(0, xWing.getHeight() - 5), new Vector2(10, 0));
+                    laser = new Laser(this, 1, getLocation().cpy().add(0, xWing.getHeight() - 5), new Vector2(10, 0));
                 } else {
-                    laser = new Laser(this, getLocation().cpy(), new Vector2(10, 0));
+                    laser = new Laser(this, 1, getLocation().cpy(), new Vector2(10, 0));
                 }
                 shootTop = !shootTop;
                 EntityManager.getInstance().addEntity(laser);
+                laserAmmo--;
+                if(laserAmmo == 0)
+                    reload1();
             }
 
         }
@@ -118,19 +133,48 @@ public class PlayerShip extends Entity {
 
             if (Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_LEFT)) {
                 if(isDead) {return;}
+                if(laserAmmo == 0) {return;}
                 Laser laser;
                 if(shootTop) {
-                    laser = new Laser (this ,getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(10 ,0 ));
+                    laser = new Laser (this, 1, getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(10 ,0 ));
                 } else {
-                    laser = new Laser (this ,getLocation().cpy(), new Vector2(10 ,0 ));
+                    laser = new Laser (this, 1, getLocation().cpy(), new Vector2(10 ,0 ));
                 }
                 shootTop = !shootTop;
                 EntityManager.getInstance().addEntity(laser);
+                laserAmmo--;
+                if(laserAmmo == 0)
+                    reload2();
             }
         }
     }
 
     public int getScore() {
         return score;
+    }
+
+    public void reload1() {
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                laserAmmo = 10;
+            }
+        }, 2000);
+    }
+    public void reload2() {
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                laserAmmo = 10;
+            }
+        }, 2000);
+    }
+
+    public int getLaserAmmo() {
+        return laserAmmo;
+    }
+
+    public void setLaserAmmo(int laserAmmo) {
+        this.laserAmmo = laserAmmo;
     }
 }

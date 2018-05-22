@@ -3,6 +3,7 @@ package pl.kompanpawel.spaceshoooter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 public class Laser extends Entity{
@@ -13,13 +14,22 @@ public class Laser extends Entity{
 
 
 
-    public Laser(Entity owner, Vector2 sentLocation, Vector2 sentVelocity) {
+    public Laser(Entity owner,int type, Vector2 sentLocation, Vector2 sentVelocity) {
         this.setLocation(sentLocation);
         this.setVelocity(sentVelocity);
         if(owner instanceof PlayerShip)
             laser = SpaceShoooter.assetManager.get("laserRed13.png");
-        else if(owner instanceof Enemy)
+        else if(owner instanceof Enemy && type == 1)
             laser = SpaceShoooter.assetManager.get("laserGreen03.png");
+        else if(owner instanceof Enemy && type == 2)
+            laser = SpaceShoooter.assetManager.get("laserGreen03_y2.png");
+        else if(owner instanceof Enemy && type == 3)
+            laser = SpaceShoooter.assetManager.get("laserGreen03_y-2.png");
+        else if(owner instanceof Enemy && type == 4)
+            laser = SpaceShoooter.assetManager.get("laserGreen03_y4.png");
+        else if(owner instanceof Enemy && type == 5)
+            laser = SpaceShoooter.assetManager.get("laserGreen03_y-4.png");
+
         this.owner = owner;
     }
 
@@ -35,7 +45,7 @@ public class Laser extends Entity{
             isValid = false;
             return;
         }
-        if((getLocation().y < 0 + laser.getHeight()) || (getLocation().y > SpaceShoooter.getHeight())) {
+        if((getLocation().y < 0 - laser.getHeight()) || (getLocation().y > SpaceShoooter.getHeight()+ laser.getHeight())) {
             isValid = false;
             return;
         }
@@ -43,7 +53,8 @@ public class Laser extends Entity{
 
     @Override
     public void draw(SpriteBatch spriteBatch, float delta) {
-        spriteBatch.draw(laser, getLocation().x, getLocation().y);
+        TextureRegion tr = new TextureRegion(laser);
+        spriteBatch.draw(tr, getLocation().x, getLocation().y, 0,0, laser.getWidth(), laser.getHeight(),1,1,getVelocity().angle());
         update();
     }
 

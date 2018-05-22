@@ -67,7 +67,7 @@ public class EntityFactory {
 
     public static Entity factorDestroyer() {
         Enemy newDestroyer;
-        newDestroyer = new Enemy(2, new Vector2(SpaceShoooter.getWidth()- 490,SpaceShoooter.getHeight()/2-150), new Vector2(200,20));
+        newDestroyer = new Enemy(2, new Vector2(SpaceShoooter.getWidth()+10,SpaceShoooter.getHeight()/2-90), new Vector2(200,20));
         return newDestroyer;
     }
 }

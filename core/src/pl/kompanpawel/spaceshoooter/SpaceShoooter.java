@@ -23,10 +23,14 @@ public class SpaceShoooter extends Game {
 		assetManager.load("xwing.png", Texture.class);
 		assetManager.load("laserRed13.png", Texture.class);
 		assetManager.load("laserGreen03.png", Texture.class);
+		assetManager.load("laserGreen03_y2.png", Texture.class);
+		assetManager.load("laserGreen03_y-2.png", Texture.class);
+		assetManager.load("laserGreen03_y4.png", Texture.class);
+		assetManager.load("laserGreen03_y-4.png", Texture.class);
 		assetManager.load("rsz_tie_fighter.png", Texture.class);
 		assetManager.load("executor_copy.png",Texture.class);
 		assetManager.finishLoading();
-        font = new BitmapFont(Gdx.files.internal("default.fnt"), Gdx.files.internal("default.png"), false);
+        font = new BitmapFont(Gdx.files.internal("starwars.fnt"), Gdx.files.internal("starwars.png"), false);
 		this.setScreen(new MainMenu(this));
 	}
 
