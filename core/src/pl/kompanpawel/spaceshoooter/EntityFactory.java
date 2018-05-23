@@ -65,9 +65,20 @@ public class EntityFactory {
         return newTIE;
     }
 
-    public static Entity factorDestroyer() {
+    public static Entity factorExecutor() {
+        Enemy newExecutor;
+        newExecutor = new Enemy(3, new Vector2(SpaceShoooter.getWidth()+10,SpaceShoooter.getHeight()/2-90), new Vector2(200,20));
+        return newExecutor;
+    }
+
+    public static Entity factorDestroyer1() {
         Enemy newDestroyer;
-        newDestroyer = new Enemy(2, new Vector2(SpaceShoooter.getWidth()+10,SpaceShoooter.getHeight()/2-90), new Vector2(200,20));
+        newDestroyer = new Enemy(2, new Vector2(-1000, 10), new Vector2(200, 20));
+        return newDestroyer;
+    }
+    public static Entity factorDestroyer2() {
+        Enemy newDestroyer;
+        newDestroyer = new Enemy(2, new Vector2(-1000, 500), new Vector2(200, 20));
         return newDestroyer;
     }
 }

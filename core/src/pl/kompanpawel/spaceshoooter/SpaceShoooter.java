@@ -29,6 +29,8 @@ public class SpaceShoooter extends Game {
 		assetManager.load("laserGreen03_y-4.png", Texture.class);
 		assetManager.load("rsz_tie_fighter.png", Texture.class);
 		assetManager.load("executor_copy.png",Texture.class);
+		assetManager.load("dest_left.png",Texture.class);
+		assetManager.load("dest_right.png",Texture.class);
 		assetManager.finishLoading();
         font = new BitmapFont(Gdx.files.internal("starwars.fnt"), Gdx.files.internal("starwars.png"), false);
 		this.setScreen(new MainMenu(this));

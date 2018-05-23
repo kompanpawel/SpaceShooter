@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddecb55a-5b1e-4c34-9c0a-6957adbee96f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/core/assets/starwars.fnt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/assets/starwars.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/PlayerShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/PlayerShip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Space.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Space.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/core/.gradle/" />
     <ignored path="$PROJECT_DIR$/core/build/" />
@@ -28,42 +34,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3856">
-              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+            <state relative-caret-position="-1068">
+              <caret line="411" column="74" selection-start-line="411" selection-start-column="74" selection-end-line="411" selection-end-column="74" />
               <folding>
-                <element signature="e#7914#7915#0" expanded="true" />
-                <element signature="e#7954#7955#0" expanded="true" />
-                <element signature="e#7984#7985#0" expanded="true" />
-                <element signature="e#8025#8026#0" expanded="true" />
-                <element signature="e#8055#8056#0" expanded="true" />
-                <element signature="e#8084#8085#0" expanded="true" />
-                <element signature="e#8125#8126#0" expanded="true" />
-                <element signature="e#8161#8162#0" expanded="true" />
-                <element signature="e#8896#8897#0" expanded="true" />
-                <element signature="e#8962#8963#0" expanded="true" />
-                <element signature="e#8994#8995#0" expanded="true" />
-                <element signature="e#9023#9024#0" expanded="true" />
-                <element signature="e#9131#9132#0" expanded="true" />
-                <element signature="e#9170#9171#0" expanded="true" />
-                <element signature="e#9235#9236#0" expanded="true" />
-                <element signature="e#9291#9292#0" expanded="true" />
-                <element signature="e#9324#9325#0" expanded="true" />
-                <element signature="e#9356#9357#0" expanded="true" />
-                <element signature="e#9403#9404#0" expanded="true" />
-                <element signature="e#9445#9446#0" expanded="true" />
+                <element signature="e#21960#21961#0" expanded="true" />
+                <element signature="e#22000#22001#0" expanded="true" />
+                <element signature="e#22030#22031#0" expanded="true" />
+                <element signature="e#22071#22072#0" expanded="true" />
+                <element signature="e#22101#22102#0" expanded="true" />
+                <element signature="e#22130#22131#0" expanded="true" />
+                <element signature="e#22171#22172#0" expanded="true" />
+                <element signature="e#22207#22208#0" expanded="true" />
+                <element signature="e#22942#22943#0" expanded="true" />
+                <element signature="e#23008#23009#0" expanded="true" />
+                <element signature="e#23040#23041#0" expanded="true" />
+                <element signature="e#23069#23070#0" expanded="true" />
+                <element signature="e#23177#23178#0" expanded="true" />
+                <element signature="e#23216#23217#0" expanded="true" />
+                <element signature="e#23281#23282#0" expanded="true" />
+                <element signature="e#23337#23338#0" expanded="true" />
+                <element signature="e#23370#23371#0" expanded="true" />
+                <element signature="e#23402#23403#0" expanded="true" />
+                <element signature="e#23449#23450#0" expanded="true" />
+                <element signature="e#23491#23492#0" expanded="true" />
+                <element signature="e#23525#23526#0" expanded="true" />
+                <element signature="e#23555#23556#0" expanded="true" />
+                <element signature="e#23602#23603#0" expanded="true" />
+                <element signature="e#23640#23641#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Entity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Entity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -71,32 +72,56 @@
       <file leaf-file-name="PlayerShip.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/PlayerShip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+            <state relative-caret-position="564">
+              <caret line="98" column="68" selection-start-line="98" selection-start-column="68" selection-end-line="98" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#340#341#0" expanded="true" />
-                <element signature="e#407#408#0" expanded="true" />
-                <element signature="e#1406#1407#0" expanded="true" />
-                <element signature="e#1435#1436#0" expanded="true" />
-                <element signature="e#1465#1466#0" expanded="true" />
-                <element signature="e#1494#1495#0" expanded="true" />
-                <element signature="e#1523#1524#0" expanded="true" />
-                <element signature="e#1562#1563#0" expanded="true" />
-                <element signature="e#1592#1593#0" expanded="true" />
-                <element signature="e#1632#1633#0" expanded="true" />
+                <element signature="e#1640#1641#0" expanded="true" />
                 <element signature="e#1669#1670#0" expanded="true" />
-                <element signature="e#1698#1699#0" expanded="true" />
-                <element signature="e#4850#4851#0" expanded="true" />
-                <element signature="e#4878#4879#0" expanded="true" />
-                <element signature="e#5184#5311#0" expanded="true" />
-                <element signature="e#5310#5311#0" expanded="true" />
-                <element signature="e#5377#5504#0" expanded="true" />
-                <element signature="e#5503#5504#0" expanded="true" />
-                <element signature="e#5237#5238#0" expanded="true" />
-                <element signature="e#5269#5270#0" expanded="true" />
-                <element signature="e#5316#5317#0" expanded="true" />
-                <element signature="e#5358#5359#0" expanded="true" />
+                <element signature="e#4814#4815#0" expanded="true" />
+                <element signature="e#4842#4843#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Space.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Space.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-170">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2620#2834#0" expanded="true" />
+                <element signature="e#2833#2834#0" expanded="true" />
+                <element signature="e#4297#4490#0" expanded="true" />
+                <element signature="e#4489#4490#0" expanded="true" />
+                <element signature="e#8948#8949#0" expanded="true" />
+                <element signature="e#8982#8983#0" expanded="true" />
+                <element signature="e#9033#9034#0" expanded="true" />
+                <element signature="e#9079#9080#0" expanded="true" />
+                <element signature="e#9107#9108#0" expanded="true" />
+                <element signature="e#9134#9135#0" expanded="true" />
+                <element signature="e#9171#9172#0" expanded="true" />
+                <element signature="e#9203#9204#0" expanded="true" />
+                <element signature="e#9232#9233#0" expanded="true" />
+                <element signature="e#9260#9261#0" expanded="true" />
+                <element signature="e#9299#9300#0" expanded="true" />
+                <element signature="e#9333#9334#0" expanded="true" />
+                <element signature="e#9364#9365#0" expanded="true" />
+                <element signature="e#9391#9392#0" expanded="true" />
+                <element signature="e#9432#9433#0" expanded="true" />
+                <element signature="e#9464#9465#0" expanded="true" />
+                <element signature="e#9492#9493#0" expanded="true" />
+                <element signature="e#9519#9520#0" expanded="true" />
+                <element signature="e#9556#9557#0" expanded="true" />
+                <element signature="e#9588#9589#0" expanded="true" />
+                <element signature="e#9620#9621#0" expanded="true" />
+                <element signature="e#9648#9649#0" expanded="true" />
+                <element signature="e#9691#9692#0" expanded="true" />
+                <element signature="e#9725#9726#0" expanded="true" />
+                <element signature="e#10065#10066#0" expanded="true" />
+                <element signature="e#10102#10103#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,69 +130,33 @@
       <file leaf-file-name="GameUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="47" column="61" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
+            <state relative-caret-position="340">
+              <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Laser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Laser.java">
+      <file leaf-file-name="GameScreen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="55" column="52" selection-start-line="55" selection-start-column="52" selection-end-line="55" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SecondShip.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SecondShip.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14">
-              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="363">
+              <caret line="100" column="66" selection-start-line="100" selection-start-column="66" selection-end-line="100" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#338#339#0" expanded="true" />
-                <element signature="e#405#406#0" expanded="true" />
+                <element signature="e#1606#1607#0" expanded="true" />
+                <element signature="e#1675#1676#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainMenu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/MainMenu.java">
+      <file leaf-file-name="EntityFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="41" column="40" lean-forward="true" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Space.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Space.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="131" column="37" lean-forward="true" selection-start-line="131" selection-start-column="37" selection-end-line="131" selection-end-column="37" />
+            <state relative-caret-position="275">
+              <caret line="76" column="28" lean-forward="true" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2234#2448#0" expanded="true" />
-                <element signature="e#2447#2448#0" expanded="true" />
-                <element signature="e#5641#5642#0" expanded="true" />
-                <element signature="e#5675#5676#0" expanded="true" />
-                <element signature="e#5726#5727#0" expanded="true" />
-                <element signature="e#5772#5773#0" expanded="true" />
-                <element signature="e#5800#5801#0" expanded="true" />
-                <element signature="e#5827#5828#0" expanded="true" />
-                <element signature="e#5864#5865#0" expanded="true" />
-                <element signature="e#5896#5897#0" expanded="true" />
-                <element signature="e#5925#5926#0" expanded="true" />
-                <element signature="e#5953#5954#0" expanded="true" />
-                <element signature="e#5992#5993#0" expanded="true" />
-                <element signature="e#6026#6027#0" expanded="true" />
-                <element signature="e#6057#6058#0" expanded="true" />
-                <element signature="e#6084#6085#0" expanded="true" />
-                <element signature="e#6125#6126#0" expanded="true" />
-                <element signature="e#6157#6158#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -985,17 +974,18 @@
         <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Ship.java" />
         <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/ControllerManager.java" />
         <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Entity.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/MainMenu.java" />
         <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/TIE.java" />
         <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityManager.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameScreen.java" />
         <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SecondShip.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityFactory.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameUI.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Enemy.java" />
-        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/PlayerShip.java" />
         <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Laser.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/MainMenu.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Destroyer.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityFactory.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/PlayerShip.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Enemy.java" />
+        <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameUI.java" />
         <option value="$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Space.java" />
       </list>
     </option>
@@ -1021,9 +1011,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1064,6 +1053,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1191,7 +1181,8 @@
       <workItem from="1526938681030" duration="7000" />
       <workItem from="1526939044968" duration="130000" />
       <workItem from="1526940578827" duration="668000" />
-      <workItem from="1526987341036" duration="14131000" />
+      <workItem from="1526987341036" duration="15896000" />
+      <workItem from="1527068327858" duration="14112000" />
     </task>
     <task id="LOCAL-00001" summary="intelij">
       <created>1522007083455</created>
@@ -1249,11 +1240,25 @@
       <option name="project" value="LOCAL" />
       <updated>1527018239532</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="v0.5.5 - change collisions to polygon intersectors, improved enemy">
+      <created>1527019173306</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1527019173306</updated>
+    </task>
+    <task id="LOCAL-00010" summary="v0.5.5 - change collisions to polygon intersectors, improved enemy">
+      <created>1527020284764</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1527020284764</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100970000" />
+    <option name="totallyTimeSpent" value="116847000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -1274,7 +1279,6 @@
       <window_info id="Designer" order="3" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30729166" />
       <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32827586" />
       <window_info anchor="right" id="Gradle" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1288,6 +1292,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32827586" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1316,26 +1321,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="v0.5.5 - change collisions to polygon intersectors, improved enemy" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Laser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/desktop/src/pl/kompanpawel/spaceshoooter/desktop/DesktopLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.8/bac17f395be5010619b31280fe84e9f53118d0b9/gdx-1.9.8-sources.jar!/com/badlogic/gdx/ApplicationAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1460,18 +1445,6 @@
     <entry file="file://$PROJECT_DIR$/core/assets/executor_copy.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="104" column="94" selection-start-line="104" selection-start-column="94" selection-end-line="104" selection-end-column="94" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1606#1607#0" expanded="true" />
-            <element signature="e#1675#1676#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_102/src.zip!/java/lang/Runnable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
@@ -1518,77 +1491,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityFactory.java">
+    <entry file="file://$PROJECT_DIR$/core/assets/xwing.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/X_Wing_Game_Fighter.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Laser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="69" column="105" selection-start-line="69" selection-start-column="105" selection-end-line="69" selection-end-column="105" />
+        <state relative-caret-position="632">
+          <caret line="55" column="52" selection-start-line="55" selection-start-column="52" selection-end-line="55" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/rsz_tie_fighter.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/xwing.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.8/bac17f395be5010619b31280fe84e9f53118d0b9/gdx-1.9.8-sources.jar!/com/badlogic/gdx/Input.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="653" column="28" lean-forward="true" selection-start-line="653" selection-start-column="28" selection-end-line="653" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/MainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-765">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="68">
           <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="47" column="61" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Enemy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3856">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-          <folding>
-            <element signature="e#7914#7915#0" expanded="true" />
-            <element signature="e#7954#7955#0" expanded="true" />
-            <element signature="e#7984#7985#0" expanded="true" />
-            <element signature="e#8025#8026#0" expanded="true" />
-            <element signature="e#8055#8056#0" expanded="true" />
-            <element signature="e#8084#8085#0" expanded="true" />
-            <element signature="e#8125#8126#0" expanded="true" />
-            <element signature="e#8161#8162#0" expanded="true" />
-            <element signature="e#8896#8897#0" expanded="true" />
-            <element signature="e#8962#8963#0" expanded="true" />
-            <element signature="e#8994#8995#0" expanded="true" />
-            <element signature="e#9023#9024#0" expanded="true" />
-            <element signature="e#9131#9132#0" expanded="true" />
-            <element signature="e#9170#9171#0" expanded="true" />
-            <element signature="e#9235#9236#0" expanded="true" />
-            <element signature="e#9291#9292#0" expanded="true" />
-            <element signature="e#9324#9325#0" expanded="true" />
-            <element signature="e#9356#9357#0" expanded="true" />
-            <element signature="e#9403#9404#0" expanded="true" />
-            <element signature="e#9445#9446#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Laser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="55" column="52" selection-start-line="55" selection-start-column="52" selection-end-line="55" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SecondShip.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="17">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#338#339#0" expanded="true" />
@@ -1597,78 +1546,138 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/PlayerShip.java">
+    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/SpaceShoooter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+        <state relative-caret-position="357">
+          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Destroyer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#340#341#0" expanded="true" />
-            <element signature="e#407#408#0" expanded="true" />
-            <element signature="e#1406#1407#0" expanded="true" />
-            <element signature="e#1435#1436#0" expanded="true" />
-            <element signature="e#1465#1466#0" expanded="true" />
-            <element signature="e#1494#1495#0" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-            <element signature="e#1562#1563#0" expanded="true" />
-            <element signature="e#1592#1593#0" expanded="true" />
-            <element signature="e#1632#1633#0" expanded="true" />
-            <element signature="e#1669#1670#0" expanded="true" />
-            <element signature="e#1698#1699#0" expanded="true" />
-            <element signature="e#4850#4851#0" expanded="true" />
-            <element signature="e#4878#4879#0" expanded="true" />
-            <element signature="e#5184#5311#0" expanded="true" />
-            <element signature="e#5310#5311#0" expanded="true" />
-            <element signature="e#5377#5504#0" expanded="true" />
-            <element signature="e#5503#5504#0" expanded="true" />
-            <element signature="e#5237#5238#0" expanded="true" />
-            <element signature="e#5269#5270#0" expanded="true" />
-            <element signature="e#5316#5317#0" expanded="true" />
-            <element signature="e#5358#5359#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/xwing.jpg">
+    <entry file="file://$PROJECT_DIR$/core/assets/dest_right.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/X_Wing_Game_Fighter.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/MainMenu.java">
+    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/EntityFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="41" column="40" lean-forward="true" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
+        <state relative-caret-position="275">
+          <caret line="76" column="28" lean-forward="true" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/xwing.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Space.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="131" column="37" lean-forward="true" selection-start-line="131" selection-start-column="37" selection-end-line="131" selection-end-column="37" />
+        <state relative-caret-position="-170">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2234#2448#0" expanded="true" />
-            <element signature="e#2447#2448#0" expanded="true" />
-            <element signature="e#5641#5642#0" expanded="true" />
-            <element signature="e#5675#5676#0" expanded="true" />
-            <element signature="e#5726#5727#0" expanded="true" />
-            <element signature="e#5772#5773#0" expanded="true" />
-            <element signature="e#5800#5801#0" expanded="true" />
-            <element signature="e#5827#5828#0" expanded="true" />
-            <element signature="e#5864#5865#0" expanded="true" />
-            <element signature="e#5896#5897#0" expanded="true" />
-            <element signature="e#5925#5926#0" expanded="true" />
-            <element signature="e#5953#5954#0" expanded="true" />
-            <element signature="e#5992#5993#0" expanded="true" />
-            <element signature="e#6026#6027#0" expanded="true" />
-            <element signature="e#6057#6058#0" expanded="true" />
-            <element signature="e#6084#6085#0" expanded="true" />
-            <element signature="e#6125#6126#0" expanded="true" />
-            <element signature="e#6157#6158#0" expanded="true" />
+            <element signature="e#2620#2834#0" expanded="true" />
+            <element signature="e#2833#2834#0" expanded="true" />
+            <element signature="e#4297#4490#0" expanded="true" />
+            <element signature="e#4489#4490#0" expanded="true" />
+            <element signature="e#8948#8949#0" expanded="true" />
+            <element signature="e#8982#8983#0" expanded="true" />
+            <element signature="e#9033#9034#0" expanded="true" />
+            <element signature="e#9079#9080#0" expanded="true" />
+            <element signature="e#9107#9108#0" expanded="true" />
+            <element signature="e#9134#9135#0" expanded="true" />
+            <element signature="e#9171#9172#0" expanded="true" />
+            <element signature="e#9203#9204#0" expanded="true" />
+            <element signature="e#9232#9233#0" expanded="true" />
+            <element signature="e#9260#9261#0" expanded="true" />
+            <element signature="e#9299#9300#0" expanded="true" />
+            <element signature="e#9333#9334#0" expanded="true" />
+            <element signature="e#9364#9365#0" expanded="true" />
+            <element signature="e#9391#9392#0" expanded="true" />
+            <element signature="e#9432#9433#0" expanded="true" />
+            <element signature="e#9464#9465#0" expanded="true" />
+            <element signature="e#9492#9493#0" expanded="true" />
+            <element signature="e#9519#9520#0" expanded="true" />
+            <element signature="e#9556#9557#0" expanded="true" />
+            <element signature="e#9588#9589#0" expanded="true" />
+            <element signature="e#9620#9621#0" expanded="true" />
+            <element signature="e#9648#9649#0" expanded="true" />
+            <element signature="e#9691#9692#0" expanded="true" />
+            <element signature="e#9725#9726#0" expanded="true" />
+            <element signature="e#10065#10066#0" expanded="true" />
+            <element signature="e#10102#10103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="100" column="66" selection-start-line="100" selection-start-column="66" selection-end-line="100" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1606#1607#0" expanded="true" />
+            <element signature="e#1675#1676#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/GameUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/PlayerShip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="98" column="68" selection-start-line="98" selection-start-column="68" selection-end-line="98" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1640#1641#0" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
+            <element signature="e#4814#4815#0" expanded="true" />
+            <element signature="e#4842#4843#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/pl/kompanpawel/spaceshoooter/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1068">
+          <caret line="411" column="74" selection-start-line="411" selection-start-column="74" selection-end-line="411" selection-end-column="74" />
+          <folding>
+            <element signature="e#21960#21961#0" expanded="true" />
+            <element signature="e#22000#22001#0" expanded="true" />
+            <element signature="e#22030#22031#0" expanded="true" />
+            <element signature="e#22071#22072#0" expanded="true" />
+            <element signature="e#22101#22102#0" expanded="true" />
+            <element signature="e#22130#22131#0" expanded="true" />
+            <element signature="e#22171#22172#0" expanded="true" />
+            <element signature="e#22207#22208#0" expanded="true" />
+            <element signature="e#22942#22943#0" expanded="true" />
+            <element signature="e#23008#23009#0" expanded="true" />
+            <element signature="e#23040#23041#0" expanded="true" />
+            <element signature="e#23069#23070#0" expanded="true" />
+            <element signature="e#23177#23178#0" expanded="true" />
+            <element signature="e#23216#23217#0" expanded="true" />
+            <element signature="e#23281#23282#0" expanded="true" />
+            <element signature="e#23337#23338#0" expanded="true" />
+            <element signature="e#23370#23371#0" expanded="true" />
+            <element signature="e#23402#23403#0" expanded="true" />
+            <element signature="e#23449#23450#0" expanded="true" />
+            <element signature="e#23491#23492#0" expanded="true" />
+            <element signature="e#23525#23526#0" expanded="true" />
+            <element signature="e#23555#23556#0" expanded="true" />
+            <element signature="e#23602#23603#0" expanded="true" />
+            <element signature="e#23640#23641#0" expanded="true" />
           </folding>
         </state>
       </provider>

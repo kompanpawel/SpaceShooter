@@ -23,6 +23,10 @@ public class GameUI {
         font.draw(spriteBatch, "Player 1",10,camera.viewportHeight - 15);
         font.draw(spriteBatch, "HP: "+ playerShip.getHealth(), 10, camera.viewportHeight - 30);
         font.draw(spriteBatch,"Points: "+playerShip.getScore(), 10, camera.viewportHeight - 45);
+        if(Space.getInstance().isChain())
+            font.draw(spriteBatch, "Can't shoot: magnetic field", 10, camera.viewportHeight - 60);
+        if(!Space.getInstance().isPlayerCanShoot() && !Space.getInstance().isChain())
+            font.draw(spriteBatch, "Magnetic field off \nLaser restart", 10, camera.viewportHeight - 60);
         /*if(playerShip.getLaserAmmo()>0)
             font.draw(spriteBatch, "Shots: "+playerShip.getLaserAmmo(), 10, camera.viewportHeight - 60);
         else
@@ -35,10 +39,10 @@ public class GameUI {
         font.draw(spriteBatch, "Player 1",10,camera.viewportHeight - 15);
         font.draw(spriteBatch, "HP: "+ playerShip.getHealth(), 10, camera.viewportHeight - 30);
         font.draw(spriteBatch,"Points: "+playerShip.getScore(), 10, camera.viewportHeight - 45);
-        /*if(playerShip.getLaserAmmo()>0)
-            font.draw(spriteBatch, "Shots: "+playerShip.getLaserAmmo(), 10, camera.viewportHeight - 60);
-        else
-            font.draw(spriteBatch, "Shots: deheating", 10, camera.viewportHeight - 60);*/
+        if(Space.getInstance().isChain())
+            font.draw(spriteBatch, "Can't shoot: magnetic field", 10, camera.viewportHeight - 60);
+        if(!Space.getInstance().isPlayerCanShoot())
+            font.draw(spriteBatch, "Laser restart", 10, camera.viewportHeight - 60);
         font.draw(spriteBatch, "Player 2",10,60);
         font.draw(spriteBatch, "HP: "+ secondShip.getHealth(), 10,  45);
         font.draw(spriteBatch,"Points: "+secondShip.getScore(), 10, 30);

@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
+
 
 public class MainMenu implements Screen {
 
@@ -67,6 +67,7 @@ public class MainMenu implements Screen {
         Label title = new Label("SpaceShoooter", game.assetManager.get("uiskin.json", Skin.class));
         Label owner = new Label("made by Pawel Miskiewicz", game.assetManager.get("uiskin.json", Skin.class));
         //table.debug();
+
         table.add(title).colspan(2).row();
         table.add(playButton).expand().width(300).height(50);
         table.add(coopButton).expand().width(300).height(50).row();
