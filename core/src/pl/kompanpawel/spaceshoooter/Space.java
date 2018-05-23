@@ -17,7 +17,7 @@ public class Space {
     private int level = 1;
     private int enemyNumber = 0;
     private int wave = 0;
-    private int type = 1;
+    private int type = 0;
 
 
     private long delay = 4000;
