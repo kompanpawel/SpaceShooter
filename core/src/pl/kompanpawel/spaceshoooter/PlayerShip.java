@@ -22,8 +22,6 @@ public class PlayerShip extends Entity {
     private int health;
     private int score;
 
-    private Timer timer;
-
     private boolean shootTop = true;
     private boolean isDead = false;
 
@@ -34,7 +32,6 @@ public class PlayerShip extends Entity {
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 * 3));
             this.setVelocity(new Vector2(300, 300));
             health = 100;
-            timer = new Timer();
 
         }
         else if (player == 2) {
@@ -42,7 +39,6 @@ public class PlayerShip extends Entity {
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 ));
             this.setVelocity(new Vector2(300, 300));
             health = 5;
-            timer = new Timer();
         }
     }
 
@@ -76,6 +72,7 @@ public class PlayerShip extends Entity {
     public void addScore(int add) {
         score  += add;
     }
+
     public void keyboard(int player) {
         if(player == 1) {
             if ((Gdx.input.isKeyPressed(Input.Keys.UP)) && (getLocation().y < (SpaceShoooter.getCamera().viewportHeight - xWing.getHeight() - 5))) {
@@ -127,6 +124,7 @@ public class PlayerShip extends Entity {
 
             if (Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_LEFT)) {
                 if(isDead) {return;}
+                if(!Space.getInstance().isPlayerCanShoot()){return;}
                 Laser laser;
                 if(shootTop) {
                     laser = new Laser (this, 1, getLocation().cpy().add(0,xWing.getHeight()- 5), new Vector2(10 ,0 ));

@@ -8,13 +8,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.sun.org.apache.xpath.internal.operations.Or;
 
 public class SpaceShoooter extends Game {
 	public SpriteBatch batch;
     BitmapFont font;
 	public static AssetManager assetManager = new AssetManager();
 	private static OrthographicCamera camera = new OrthographicCamera();
+
 	
 	@Override
 	public void create () {
@@ -58,4 +58,5 @@ public class SpaceShoooter extends Game {
 	public void dispose () {
 		batch.dispose();
 	}
+
 }

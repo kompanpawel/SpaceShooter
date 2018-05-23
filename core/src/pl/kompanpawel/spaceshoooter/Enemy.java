@@ -72,7 +72,6 @@ public class Enemy extends Entity {
             this.setHealth(2);
             startingLocation = new Vector2(0,0);
             enemyType = type;
-            timer = new Timer();
             movmentTask = new TimerTask() {
                 @Override
                 public void run() {
@@ -80,7 +79,7 @@ public class Enemy extends Entity {
                     changeDir = !changeDir;
                 }
             };
-            timer.schedule(movmentTask, 2000, 2000);
+            Space.getInstance().getTimer().schedule(movmentTask, 2000, 2000);
         }
         else if(type == 2) {
             destroyer_right = SpaceShoooter.assetManager.get("dest_right.png");
@@ -91,7 +90,6 @@ public class Enemy extends Entity {
             this.setHealth(50);
             startingLocation = new Vector2(0,0);
             enemyType = type;
-            timer = new Timer();
             movmentTask = new TimerTask() {
                 @Override
                 public void run() {
@@ -99,7 +97,7 @@ public class Enemy extends Entity {
                     changeDir = !changeDir;
                 }
             };
-            timer.schedule(movmentTask, 5000, 5000);
+            Space.getInstance().getTimer().schedule(movmentTask, 5000, 5000);
         }
         else if(type == 3) {
             executor = SpaceShoooter.assetManager.get("executor_copy.png");
@@ -109,7 +107,6 @@ public class Enemy extends Entity {
             this.setHealth(100);
             startingLocation = new Vector2(0,0);
             enemyType = type;
-            timer = new Timer();
             movmentTask = new TimerTask() {
                 @Override
                 public void run() {
@@ -117,11 +114,12 @@ public class Enemy extends Entity {
                     changeDir = !changeDir;
                 }
             };
-            timer.schedule(movmentTask, 10000, 10000);
+            Space.getInstance().getTimer().schedule(movmentTask, 10000, 10000);
         }
     }
 
     public void fire() {
+        if(EntityManager.getInstance().isPause()) {return;}
         if (enemyType == 1) {
             if (!canShoot) {return;}
             if (isDead) {return;}
@@ -133,7 +131,7 @@ public class Enemy extends Entity {
             canShoot = false;
             Random rand = new Random();
             randomFireTime = rand.nextInt(2000) + 1000;
-            timer.schedule(new TimerTask() {
+            Space.getInstance().getTimer().schedule(new TimerTask() {
                 @Override
                 public void run() {
                     canShoot = true;
@@ -148,7 +146,7 @@ public class Enemy extends Entity {
                 laser1 = new Laser(this, 1, getLocation().cpy().add(95, 77), new Vector2(-13, 0));
                 EntityManager.getInstance().addEntity(laser1);
                 shootFirst = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootFirst = true;
@@ -159,7 +157,7 @@ public class Enemy extends Entity {
                 laser2 = new Laser(this, 2, getLocation().cpy().add(115, 87), new Vector2(-13, 2));
                 EntityManager.getInstance().addEntity(laser2);
                 shootSecond = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootSecond = true;
@@ -170,7 +168,7 @@ public class Enemy extends Entity {
                 laser3 = new Laser(this, 3, getLocation().cpy().add(115, 67), new Vector2(-13, -2));
                 EntityManager.getInstance().addEntity(laser3);
                 shootThird = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootThird = true;
@@ -181,7 +179,7 @@ public class Enemy extends Entity {
                 laser4 = new Laser(this, 1, getLocation().cpy().add(284, 28), new Vector2(-13, 0));
                 EntityManager.getInstance().addEntity(laser4);
                 shootForth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootForth = true;
@@ -192,7 +190,7 @@ public class Enemy extends Entity {
                 laser5 = new Laser(this, 1, getLocation().cpy().add(284, 140), new Vector2(-13, 0));
                 EntityManager.getInstance().addEntity(laser5);
                 shootFifth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootFifth = true;
@@ -203,7 +201,7 @@ public class Enemy extends Entity {
                 laser6 = new Laser(this, 4, getLocation().cpy().add(200, 50), new Vector2(-13, 4));
                 EntityManager.getInstance().addEntity(laser6);
                 shootSixth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootSixth = true;
@@ -214,7 +212,7 @@ public class Enemy extends Entity {
                 laser7 = new Laser(this, 5, getLocation().cpy().add(200, 100), new Vector2(-13, -4));
                 EntityManager.getInstance().addEntity(laser7);
                 shootSeventh = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootSeventh = true;
@@ -225,7 +223,7 @@ public class Enemy extends Entity {
                 laser8 = new Laser(this, 1, getLocation().cpy().add(300, 0), new Vector2(-15, 0));
                 EntityManager.getInstance().addEntity(laser8);
                 shootEighth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootEighth = true;
@@ -236,7 +234,7 @@ public class Enemy extends Entity {
                 laser9 = new Laser(this, 1, getLocation().cpy().add(300, 177), new Vector2(-15, 0));
                 EntityManager.getInstance().addEntity(laser9);
                 shootNineth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootNineth = true;
@@ -289,7 +287,7 @@ public class Enemy extends Entity {
                     laser1 = new Laser(this, 1, getLocation().cpy().add(60, 40), new Vector2(0, -5));
                 EntityManager.getInstance().addEntity(laser1);
                 shootFirst = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                         @Override
                         public void run() {
                             shootFirst = true;
@@ -300,7 +298,7 @@ public class Enemy extends Entity {
                 laser1 = new Laser(this, 1, getLocation().cpy().add(95, 77), new Vector2(-13, 0));
                 EntityManager.getInstance().addEntity(laser1);
                 shootFirst = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootFirst = true;
@@ -314,7 +312,7 @@ public class Enemy extends Entity {
                     laser2 = new Laser(this, 1, getLocation().cpy().add(140, 50), new Vector2(0, -5));
                 EntityManager.getInstance().addEntity(laser2);
                 shootSecond = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootSecond = true;
@@ -325,7 +323,7 @@ public class Enemy extends Entity {
                 laser2 = new Laser(this, 2, getLocation().cpy().add(115, 87), new Vector2(-13, 2));
                 EntityManager.getInstance().addEntity(laser2);
                 shootSecond = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootSecond = true;
@@ -339,7 +337,7 @@ public class Enemy extends Entity {
                     laser3 = new Laser(this, 1, getLocation().cpy().add(200, 70), new Vector2(0, -5));
                 EntityManager.getInstance().addEntity(laser3);
                 shootThird = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootThird = true;
@@ -350,7 +348,7 @@ public class Enemy extends Entity {
                 laser3 = new Laser(this, 3, getLocation().cpy().add(115, 67), new Vector2(-13, -2));
                 EntityManager.getInstance().addEntity(laser3);
                 shootThird = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootThird = true;
@@ -364,7 +362,7 @@ public class Enemy extends Entity {
                     laser4 = new Laser(this, 1, getLocation().cpy().add(260, 80), new Vector2(0, -5));
                 EntityManager.getInstance().addEntity(laser4);
                 shootForth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootForth = true;
@@ -375,7 +373,7 @@ public class Enemy extends Entity {
                 laser4 = new Laser(this, 1, getLocation().cpy().add(284, 28), new Vector2(-13, 0));
                 EntityManager.getInstance().addEntity(laser4);
                 shootForth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootForth = true;
@@ -389,7 +387,7 @@ public class Enemy extends Entity {
                     laser5 = new Laser(this, 1, getLocation().cpy().add(320, 90), new Vector2(0, -5));
                 EntityManager.getInstance().addEntity(laser5);
                 shootFifth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootFifth = true;
@@ -400,7 +398,7 @@ public class Enemy extends Entity {
                 laser5 = new Laser(this, 1, getLocation().cpy().add(284, 140), new Vector2(-13, 0));
                 EntityManager.getInstance().addEntity(laser5);
                 shootFifth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootFifth = true;
@@ -414,7 +412,7 @@ public class Enemy extends Entity {
                     laser6 = new Laser(this, 1, getLocation().cpy().add(380, 100), new Vector2(0, -5));
                 EntityManager.getInstance().addEntity(laser6);
                 shootSixth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootSixth = true;
@@ -425,7 +423,7 @@ public class Enemy extends Entity {
                 laser6 = new Laser(this, 4, getLocation().cpy().add(200, 50), new Vector2(-13, 4));
                 EntityManager.getInstance().addEntity(laser6);
                 shootSixth = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootSixth = true;
@@ -436,7 +434,7 @@ public class Enemy extends Entity {
                 laser7 = new Laser(this, 5, getLocation().cpy().add(200, 100), new Vector2(-13, -4));
                 EntityManager.getInstance().addEntity(laser7);
                 shootSeventh = false;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         shootSeventh = true;
@@ -456,6 +454,7 @@ public class Enemy extends Entity {
     }
 
     public void update() {
+        if(EntityManager.getInstance().isPause()) {return;}
         if(isDead) {return;}
         if(initialMovement && enemyType == 1) {
             this.getLocation().x -= this.getVelocity().x/2 * Gdx.graphics.getDeltaTime();
@@ -464,7 +463,7 @@ public class Enemy extends Entity {
                 initialMovement = false;
                 Random rand = new Random();
                 fire = rand.nextInt(1000)+50;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         firstFire = true;
@@ -479,7 +478,7 @@ public class Enemy extends Entity {
                 initialMovement = false;
                 Random rand = new Random();
                 fire = rand.nextInt(2000)+1000;
-                timer.schedule(new TimerTask() {
+                Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         firstFire = true;
@@ -493,7 +492,7 @@ public class Enemy extends Entity {
                 if (this.getLocation().x >= 0) {
                     hyperSpace = false;
                     chainOn = true;
-                    timer.schedule(new TimerTask() {
+                    Space.getInstance().getTimer().schedule(new TimerTask() {
                         @Override
                         public void run() {
                             canFly = true;
@@ -572,7 +571,6 @@ public class Enemy extends Entity {
     public void dispose() {
         isDead = true;
         movmentTask.cancel();
-        timer.cancel();
         Space.getInstance().setEnemyNumber(Space.getInstance().getEnemyNumber()-1);
     }
 

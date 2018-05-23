@@ -22,7 +22,7 @@ public class Space {
 
     private long delay = 4000;
 
-    private Timer timer;
+    private Timer timer = new Timer();
 
     private boolean stop = true;
     private boolean chain = false;
@@ -79,7 +79,6 @@ public class Space {
     public void newWaveEnemies() {
         if(!stop) {return;}
         stop = false;
-        timer = new Timer();
         timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
@@ -120,11 +119,11 @@ public class Space {
                     playerShip.setLocation(new Vector2(playerShip.getLocation().x, 480));
                 if(enemy.getLocation().x > 800) {
                     chain = false;
-                    timer = new Timer();
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
                             playerCanShoot = true;
+                            timer.cancel();
                         }
                     },8000);
                 }
@@ -269,4 +268,10 @@ public class Space {
     public boolean isPlayerCanShoot() {
         return playerCanShoot;
     }
+
+    public Timer getTimer () {
+        return timer;
+    }
+
+
 }

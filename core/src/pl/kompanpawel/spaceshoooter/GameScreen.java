@@ -7,6 +7,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+
+import java.util.TimerTask;
 
 public class GameScreen implements Screen {
 
@@ -20,6 +24,10 @@ public class GameScreen implements Screen {
 
     private int bgx1 = 0;
     private int bgx2;
+
+    private Window window;
+
+
 
     private SpaceShoooter game;
     private PlayerShip playerShip = new PlayerShip(1);
@@ -86,13 +94,25 @@ public class GameScreen implements Screen {
         if(isCoop)
             secondShip.keyboard(2);
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
-            game.setScreen(new MainMenu(game));
-            EntityManager.getInstance().removeAllEntities();
+            if (!EntityManager.getInstance().isPause()) {
+                EntityManager.getInstance().setPause(true);
+                Space.getInstance().getTimer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        while(EntityManager.getInstance().isPause()) {
+                            System.out.println(EntityManager.getInstance().isPause());
+                            if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE))
+                                EntityManager.getInstance().setPause(false);
+                        }
+                        System.out.println("zwalniam");
+                    }
+                }, 1000);
+            }
+
         }
         if(Space.getInstance().getEnemyNumber()<=0) {
             Space.getInstance().newWaveEnemies();
         }
-
         Gdx.gl.glClearColor(1,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         for(Entity e: entityManager.getEntities()) {
@@ -110,7 +130,8 @@ public class GameScreen implements Screen {
         spriteBatch.end();
         if(isCoop)
             gameUI.draw(playerShip, secondShip);
-        gameUI.draw(playerShip);
+        else
+            gameUI.draw(playerShip);
     }
 
     @Override

@@ -13,6 +13,8 @@ public class EntityManager {
         return ourInstance;
     }
 
+    private boolean pause = false;
+
     private Set<Entity> entitySet;
     private Set<Entity> entityToAdd;
     private Set<Entity> entityToRemove;
@@ -38,6 +40,7 @@ public class EntityManager {
             entityToAdd.clear();
         }
         for (Entity e : entitySet) {
+            if(pause) {return;}
             e.draw(batch, delta);
         }
     }
@@ -55,4 +58,12 @@ public class EntityManager {
     }
 
     public void removeAllEntities() { entityToRemove.addAll(entitySet);}
+
+    public boolean isPause() {
+        return pause;
+    }
+
+    public void setPause(boolean pause) {
+        this.pause = pause;
+    }
 }
