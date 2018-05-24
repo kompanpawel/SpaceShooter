@@ -1,4 +1,4 @@
-package pl.kompanpawel.spaceshoooter;
+package pl.kompanpawel.spaceshoooter.Entities;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
