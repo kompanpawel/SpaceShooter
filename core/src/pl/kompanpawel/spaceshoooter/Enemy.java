@@ -26,6 +26,7 @@ public class Enemy extends Entity {
     private Texture destroyer_right;
 
     private Entity owner;
+    private Explosion explosion;
 
     private int enemyType;
     private int health;
@@ -65,11 +66,11 @@ public class Enemy extends Entity {
 
     public Enemy(int type, Vector2 location, Vector2 velocity) {
         if(type == 1) {
-            tie = SpaceShoooter.assetManager.get("rsz_tie_fighter.png");
+            tie = SpaceShoooter.assetManager.get("ships/rsz_tie_fighter.png");
             toDraw = tie;
             this.setLocation(location);
             this.setVelocity(velocity);
-            this.setHealth(2);
+            this.setHealth(1+Space.getInstance().getLevel());
             startingLocation = new Vector2(0,0);
             enemyType = type;
             movmentTask = new TimerTask() {
@@ -82,8 +83,8 @@ public class Enemy extends Entity {
             Space.getInstance().getTimer().schedule(movmentTask, 2000, 2000);
         }
         else if(type == 2) {
-            destroyer_right = SpaceShoooter.assetManager.get("dest_right.png");
-            destroyer_left = SpaceShoooter.assetManager.get("dest_left.png");
+            destroyer_right = SpaceShoooter.assetManager.get("ships/dest_right.png");
+            destroyer_left = SpaceShoooter.assetManager.get("ships/dest_left.png");
             toDraw = destroyer_right;
             this.setLocation(location);
             this.setVelocity(velocity);
@@ -100,7 +101,7 @@ public class Enemy extends Entity {
             Space.getInstance().getTimer().schedule(movmentTask, 5000, 5000);
         }
         else if(type == 3) {
-            executor = SpaceShoooter.assetManager.get("executor_copy.png");
+            executor = SpaceShoooter.assetManager.get("ships/executor_copy.png");
             toDraw = executor;
             this.setLocation(location);
             this.setVelocity(velocity);
@@ -521,10 +522,14 @@ public class Enemy extends Entity {
         }
 
         if(enemyType == 1) {
-            if (!initialMovement && changeDir && (getLocation().y < (SpaceShoooter.getHeight() - toDraw.getHeight() - 5)))
+            if (!initialMovement && changeDir && (getLocation().y < (SpaceShoooter.getHeight() - toDraw.getHeight() - 5)) && (getLocation().x > 500)) {
                 this.getLocation().y += this.getVelocity().y / 2 * Gdx.graphics.getDeltaTime();
-            else if (!initialMovement && !changeDir && (getLocation().y > 5))
+                this.getLocation().x -= this.getVelocity().x / 8 * Gdx.graphics.getDeltaTime();
+            }
+            else if (!initialMovement && !changeDir && (getLocation().y > 5) && (getLocation().x > 500)) {
                 this.getLocation().y -= this.getVelocity().y / 2 * Gdx.graphics.getDeltaTime();
+                this.getLocation().x -= this.getVelocity().x / 8 * Gdx.graphics.getDeltaTime();
+            }
         }
         else if(enemyType == 3 || enemyType == 2) {
             if (!initialMovement && changeDir && (getLocation().y < (SpaceShoooter.getHeight() - toDraw.getHeight() - 5)))
@@ -575,7 +580,9 @@ public class Enemy extends Entity {
     }
 
     public void destroyed() {
-            EntityManager.getInstance().removeEntity(this);
+        explosion = new Explosion(this.getLocation(), 3);
+        EntityManager.getInstance().addEntity(explosion);
+        EntityManager.getInstance().removeEntity(this);
     }
 
 

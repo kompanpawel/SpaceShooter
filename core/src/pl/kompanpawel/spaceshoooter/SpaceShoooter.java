@@ -19,20 +19,19 @@ public class SpaceShoooter extends Game {
 	@Override
 	public void create () {
         batch = new SpriteBatch();
-		assetManager.load("uiskin.json", Skin.class);
-		assetManager.load("xwing.png", Texture.class);
-		assetManager.load("laserRed13.png", Texture.class);
-		assetManager.load("laserGreen03.png", Texture.class);
-		assetManager.load("laserGreen03_y2.png", Texture.class);
-		assetManager.load("laserGreen03_y-2.png", Texture.class);
-		assetManager.load("laserGreen03_y4.png", Texture.class);
-		assetManager.load("laserGreen03_y-4.png", Texture.class);
-		assetManager.load("rsz_tie_fighter.png", Texture.class);
-		assetManager.load("executor_copy.png",Texture.class);
-		assetManager.load("dest_left.png",Texture.class);
-		assetManager.load("dest_right.png",Texture.class);
+		assetManager.load("fonts and others/uiskin.json", Skin.class);
+		assetManager.load("ships/xwing.png", Texture.class);
+		assetManager.load("lasers/laserRed13.png", Texture.class);
+		assetManager.load("lasers/laserGreen03.png", Texture.class);
+		assetManager.load("ships/rsz_tie_fighter.png", Texture.class);
+		assetManager.load("ships/executor_copy.png",Texture.class);
+		assetManager.load("ships/dest_left.png",Texture.class);
+		assetManager.load("ships/dest_right.png",Texture.class);
+		assetManager.load("explosions/exp3.png",Texture.class);
+		assetManager.load("explosions/exp2.png",Texture.class);
+		assetManager.load("explosions/exp2_player.png",Texture.class);
 		assetManager.finishLoading();
-        font = new BitmapFont(Gdx.files.internal("starwars.fnt"), Gdx.files.internal("starwars.png"), false);
+        font = new BitmapFont(Gdx.files.internal("fonts and others/starwars.fnt"), Gdx.files.internal("fonts and others/starwars.png"), false);
 		this.setScreen(new MainMenu(this));
 	}
 

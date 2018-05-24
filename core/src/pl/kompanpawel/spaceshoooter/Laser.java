@@ -11,6 +11,7 @@ public class Laser extends Entity{
 
     private Texture laser;
     private Entity owner;
+    private Explosion explosion;
 
 
 
@@ -18,17 +19,9 @@ public class Laser extends Entity{
         this.setLocation(sentLocation);
         this.setVelocity(sentVelocity);
         if(owner instanceof PlayerShip)
-            laser = SpaceShoooter.assetManager.get("laserRed13.png");
-        else if(owner instanceof Enemy && type == 1)
-            laser = SpaceShoooter.assetManager.get("laserGreen03.png");
-        else if(owner instanceof Enemy && type == 2)
-            laser = SpaceShoooter.assetManager.get("laserGreen03_y2.png");
-        else if(owner instanceof Enemy && type == 3)
-            laser = SpaceShoooter.assetManager.get("laserGreen03_y-2.png");
-        else if(owner instanceof Enemy && type == 4)
-            laser = SpaceShoooter.assetManager.get("laserGreen03_y4.png");
-        else if(owner instanceof Enemy && type == 5)
-            laser = SpaceShoooter.assetManager.get("laserGreen03_y-4.png");
+            laser = SpaceShoooter.assetManager.get("lasers/laserRed13.png");
+        else if(owner instanceof Enemy )
+            laser = SpaceShoooter.assetManager.get("lasers/laserGreen03.png");
 
         this.owner = owner;
     }
@@ -64,6 +57,11 @@ public class Laser extends Entity{
 
     public void hit(Entity e) {
         onHit(e.getLocation());
+        if(e instanceof Enemy)
+            explosion = new Explosion(this.getLocation(), 2);
+        else if(e instanceof PlayerShip)
+            explosion = new Explosion(this.getLocation(), 20);
+        EntityManager.getInstance().addEntity(explosion);
     }
 
     public Entity getOwner() {

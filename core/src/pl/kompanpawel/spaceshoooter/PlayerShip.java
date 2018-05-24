@@ -28,14 +28,14 @@ public class PlayerShip extends Entity {
 
     public PlayerShip(int player) {
         if(player == 1) {
-            xWing = SpaceShoooter.assetManager.get("xwing.png");
+            xWing = SpaceShoooter.assetManager.get("ships/xwing.png");
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 * 3));
             this.setVelocity(new Vector2(300, 300));
             health = 100;
 
         }
         else if (player == 2) {
-            xWing = SpaceShoooter.assetManager.get("xwing.png");
+            xWing = SpaceShoooter.assetManager.get("ships/xwing.png");
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 ));
             this.setVelocity(new Vector2(300, 300));
             health = 5;

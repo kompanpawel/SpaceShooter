@@ -83,7 +83,6 @@ public class Space {
                 @Override
                 public void run() {
                     addEnemies();
-                    timer.cancel();
                     stop = true;
                 }
             },delay);
@@ -123,7 +122,6 @@ public class Space {
                         @Override
                         public void run() {
                             playerCanShoot = true;
-                            timer.cancel();
                         }
                     },8000);
                 }

@@ -21,7 +21,7 @@ public class SecondShip extends Entity {
 
 
     public SecondShip() {
-        xWing = SpaceShoooter.assetManager.get("xwing.png");
+        xWing = SpaceShoooter.assetManager.get("ships/xwing.png");
         this.setLocation(new Vector2(20, (Gdx.graphics.getHeight() / 2)+100));
         this.setVelocity(new Vector2 (200,200));
         health = 5;

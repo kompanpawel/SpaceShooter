@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 
 import java.util.TimerTask;
@@ -82,8 +81,8 @@ public class GameScreen implements Screen {
         screenWidth = SpaceShoooter.getCamera().viewportWidth;
         screenHeight= SpaceShoooter.getCamera().viewportHeight;
 
-        background1 = new Texture("space.gif");
-        background2 = new Texture("space.gif");
+        background1 = new Texture("backgrounds/space.gif");
+        background2 = new Texture("backgrounds/space.gif");
 
         bgx2 = background1.getWidth();
     }
@@ -106,7 +105,7 @@ public class GameScreen implements Screen {
                         }
                         System.out.println("zwalniam");
                     }
-                }, 1000);
+                }, 100);
             }
 
         }
