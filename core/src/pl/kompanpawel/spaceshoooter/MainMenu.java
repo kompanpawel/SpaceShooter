@@ -20,6 +20,7 @@ public class MainMenu implements Screen {
     private Table table;
     private TextButton playButton;
     private TextButton coopButton;
+    private TextButton help;
     private SpriteBatch spriteBatch;
 
     Texture background;
@@ -49,6 +50,7 @@ public class MainMenu implements Screen {
 
         playButton = new TextButton("Play",  game.assetManager.get("fonts and others/uiskin.json", Skin.class));
         coopButton = new TextButton("Co-op play", game.assetManager.get("fonts and others/uiskin.json", Skin.class));
+        help = new TextButton("?", game.assetManager.get("fonts and others/uiskin.json", Skin.class));
         playButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -61,6 +63,12 @@ public class MainMenu implements Screen {
                 game.setScreen(new GameScreen(game, 2));
             }
         });
+        help.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                game.setScreen(new HelpScreen(game));
+            }
+        });
         table = new Table(game.assetManager.get("fonts and others/uiskin.json", Skin.class));
 
         table.setFillParent(true);
@@ -68,7 +76,8 @@ public class MainMenu implements Screen {
         Label owner = new Label("made by Pawel Miskiewicz", game.assetManager.get("fonts and others/uiskin.json", Skin.class));
         //table.debug();
 
-        table.add(title).colspan(2).row();
+        table.add(title).colspan(2);
+        table.add(help).width(70).height(70).row();
         table.add(playButton).expand().width(300).height(50);
         table.add(coopButton).expand().width(300).height(50).row();
         table.add(owner).colspan(2);
