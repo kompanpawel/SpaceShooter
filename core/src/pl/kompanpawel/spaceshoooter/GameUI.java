@@ -3,6 +3,8 @@ package pl.kompanpawel.spaceshoooter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import pl.kompanpawel.spaceshoooter.Entities.PlayerShip;
+import pl.kompanpawel.spaceshoooter.Space.Space;
 
 public class GameUI {
     private SpaceShoooter game;

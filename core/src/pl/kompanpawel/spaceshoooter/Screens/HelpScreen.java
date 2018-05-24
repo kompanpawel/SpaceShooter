@@ -1,4 +1,4 @@
-package pl.kompanpawel.spaceshoooter;
+package pl.kompanpawel.spaceshoooter.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
+import pl.kompanpawel.spaceshoooter.SpaceShoooter;
 
 public class HelpScreen implements Screen {
 

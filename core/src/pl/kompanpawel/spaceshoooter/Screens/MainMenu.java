@@ -1,4 +1,4 @@
-package pl.kompanpawel.spaceshoooter;
+package pl.kompanpawel.spaceshoooter.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -12,6 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
+import pl.kompanpawel.spaceshoooter.Screens.GameScreen;
+import pl.kompanpawel.spaceshoooter.Screens.HelpScreen;
+import pl.kompanpawel.spaceshoooter.SpaceShoooter;
 
 
 public class MainMenu implements Screen {
@@ -74,9 +77,9 @@ public class MainMenu implements Screen {
         table.setFillParent(true);
         Label title = new Label("SpaceShoooter", game.assetManager.get("fonts and others/uiskin.json", Skin.class));
         Label owner = new Label("made by Pawel Miskiewicz", game.assetManager.get("fonts and others/uiskin.json", Skin.class));
-        //table.debug();
+        table.debug();
 
-        table.add(title).colspan(2);
+        table.add(title).colspan(3).center();
         table.add(help).width(70).height(70).row();
         table.add(playButton).expand().width(300).height(50);
         table.add(coopButton).expand().width(300).height(50).row();
