@@ -134,6 +134,7 @@ public class GameScreen implements Screen {
             gameUI.draw(playerShip, secondShip);
         else
             gameUI.draw(playerShip);
+        Space.getInstance().drawShip();
     }
 
     @Override

@@ -74,6 +74,7 @@ public class PlayerShip extends Entity {
 
     public void keyboard(int player) {
         if(player == 1) {
+            if(EntityManager.getInstance().isPause()) {return;}
             if ((Gdx.input.isKeyPressed(Input.Keys.UP)) && (getLocation().y < (SpaceShoooter.getCamera().viewportHeight - xWing.getHeight() - 5))) {
                 getLocation().y += getVelocity().y * Gdx.graphics.getDeltaTime();
             }
@@ -105,6 +106,7 @@ public class PlayerShip extends Entity {
 
         }
         else if (player == 2) {
+            if(EntityManager.getInstance().isPause()) {return;}
             if ((Gdx.input.isKeyPressed(Input.Keys.W)) && (getLocation().y < (SpaceShoooter.getCamera().viewportHeight - xWing.getHeight() - 5))) {
                 getLocation().y += getVelocity().y * Gdx.graphics.getDeltaTime();
             }

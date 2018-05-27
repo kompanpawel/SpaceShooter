@@ -20,7 +20,7 @@ public class SpaceShoooter extends Game {
 	@Override
 	public void create () {
         batch = new SpriteBatch();
-		assetManager.load("fonts and others/uiskin.json", Skin.class);
+		assetManager.load("fonts_and_others/uiskin.json", Skin.class);
 		assetManager.load("ships/xwing.png", Texture.class);
 		assetManager.load("lasers/laserRed13.png", Texture.class);
 		assetManager.load("lasers/laserGreen03.png", Texture.class);
@@ -32,7 +32,7 @@ public class SpaceShoooter extends Game {
 		assetManager.load("explosions/exp2.png",Texture.class);
 		assetManager.load("explosions/exp2_player.png",Texture.class);
 		assetManager.finishLoading();
-        font = new BitmapFont(Gdx.files.internal("fonts and others/starwars.fnt"), Gdx.files.internal("fonts and others/starwars.png"), false);
+        font = new BitmapFont(Gdx.files.internal("fonts_and_others/starwars.fnt"), Gdx.files.internal("fonts_and_others/starwars.png"), false);
 		this.setScreen(new MainMenu(this));
 	}
 

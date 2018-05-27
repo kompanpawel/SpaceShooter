@@ -51,9 +51,9 @@ public class MainMenu implements Screen {
         background = new Texture("backgrounds/Parallax100.png");
         stage = new Stage(new StretchViewport(SpaceShoooter.getCamera().viewportWidth, SpaceShoooter.getCamera().viewportHeight));
 
-        playButton = new TextButton("Play",  game.assetManager.get("fonts and others/uiskin.json", Skin.class));
-        coopButton = new TextButton("Co-op play", game.assetManager.get("fonts and others/uiskin.json", Skin.class));
-        help = new TextButton("?", game.assetManager.get("fonts and others/uiskin.json", Skin.class));
+        playButton = new TextButton("Play",  game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
+        coopButton = new TextButton("Co-op play", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
+        help = new TextButton("?", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         playButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -72,11 +72,11 @@ public class MainMenu implements Screen {
                 game.setScreen(new HelpScreen(game));
             }
         });
-        table = new Table(game.assetManager.get("fonts and others/uiskin.json", Skin.class));
+        table = new Table(game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
 
         table.setFillParent(true);
-        Label title = new Label("SpaceShoooter", game.assetManager.get("fonts and others/uiskin.json", Skin.class));
-        Label owner = new Label("made by Pawel Miskiewicz", game.assetManager.get("fonts and others/uiskin.json", Skin.class));
+        Label title = new Label("SpaceShoooter", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
+        Label owner = new Label("made by Pawel Miskiewicz", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         table.debug();
 
         table.add(title).colspan(3).center();

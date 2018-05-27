@@ -47,8 +47,9 @@ public class Laser extends Entity {
     @Override
     public void draw(SpriteBatch spriteBatch, float delta) {
         TextureRegion tr = new TextureRegion(laser);
-        spriteBatch.draw(tr, getLocation().x, getLocation().y, 0,0, laser.getWidth(), laser.getHeight(),1,1,getVelocity().angle());
         update();
+        spriteBatch.draw(tr, getLocation().x, getLocation().y, 0,0, laser.getWidth(), laser.getHeight(),1,1,getVelocity().angle());
+
     }
 
     public void onHit(Vector2 pos) {
@@ -57,11 +58,6 @@ public class Laser extends Entity {
 
     public void hit(Entity e) {
         onHit(e.getLocation());
-        if(e instanceof Enemy)
-            explosion = new Explosion(this.getLocation(), 2);
-        else if(e instanceof PlayerShip)
-            explosion = new Explosion(this.getLocation(), 20);
-        EntityManager.getInstance().addEntity(explosion);
     }
 
     public Entity getOwner() {
