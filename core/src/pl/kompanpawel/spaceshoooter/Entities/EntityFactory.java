@@ -69,7 +69,7 @@ public class EntityFactory {
 
     public static Entity factorExecutor() {
         Enemy newExecutor;
-        newExecutor = new Enemy(3, new Vector2(SpaceShoooter.getWidth()+10,SpaceShoooter.getHeight()/2-90), new Vector2(200,20));
+        newExecutor = new Enemy(3, new Vector2(SpaceShoooter.getWidth()+60,SpaceShoooter.getHeight()/2-90), new Vector2(200,20));
         return newExecutor;
     }
 

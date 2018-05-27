@@ -15,7 +15,7 @@ import java.util.TimerTask;
 public class Space {
     private static Space instance = new Space();
 
-    private int level = 1;
+    private int level = 3;
     private int enemyNumber = 0;
     private int wave = 0;
     private int type = 0;
@@ -29,6 +29,10 @@ public class Space {
     private boolean chain = false;
     private boolean playerCanShoot = true;
 
+    private float locX;
+    private float locY;
+    private int angle;
+
     private Polygon execPoly;
     private Polygon enemyPoly;
     private Polygon playerPoly;
@@ -36,6 +40,35 @@ public class Space {
 
     private ShapeRenderer shapeRenderer;
 
+    private Vector2 playerPosition;
+
+
+
+    public float getPositionX() {
+        for (Entity ent : entityManager.getEntities()) {
+            if(ent instanceof PlayerShip) {
+                PlayerShip playerShip = (PlayerShip) ent;
+                locX = playerShip.getLocation().x;
+            }
+        }
+        return locX;
+    }
+    public float getPositionY() {
+        for (Entity ent : entityManager.getEntities()) {
+            if(ent instanceof PlayerShip) {
+                PlayerShip playerShip = (PlayerShip) ent;
+                locY = playerShip.getLocation().y;
+            }
+        }
+        return locY;
+    }
+
+
+
+
+    public void setAngle(Laser laser) {
+        laser.getVelocity().setAngle((float) Math.tan(locX/locY));
+    }
 
 
     public static Space getInstance() { return instance; }
@@ -220,10 +253,6 @@ public class Space {
                     explosion = new Explosion(laser.getLocation(), 20);
                     EntityManager.getInstance().addEntity(explosion);
                     laser.hit(playerShip);
-
-                    System.out.println(playerShip.getLocation().x);
-                    System.out.println(playerShip.getLocation().y);
-
                     playerShip.getHited();
                     return;
                 }
@@ -265,7 +294,6 @@ public class Space {
                     explosion = new Explosion(laser.getLocation(), 2);
                     EntityManager.getInstance().addEntity(explosion);
                     laser.hit(enemy);
-
                     enemy.getHited(laser.getOwner());
                     return;
                 }

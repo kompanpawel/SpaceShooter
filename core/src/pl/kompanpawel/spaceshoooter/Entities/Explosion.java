@@ -47,7 +47,6 @@ public class Explosion extends Entity {
             location.x -= 62;
             location.y -= 55;
             this.setLocation(location);
-            System.out.println(location);
             exptype = type;
             explosion = SpaceShoooter.assetManager.get("explosions/exp3.png");
             TextureRegion[][] tmp = TextureRegion.split(explosion, explosion.getWidth() / 8, explosion.getHeight() / 8);
@@ -68,7 +67,6 @@ public class Explosion extends Entity {
             location.x += 25;
             location.y -= 30;
             this.setLocation(location);
-            System.out.println(location);
             exptype = type;
             explosion2 = SpaceShoooter.assetManager.get("explosions/exp2.png");
             TextureRegion[][] tmp = TextureRegion.split(explosion2, explosion2.getWidth() / 8, explosion2.getHeight() / 8);
@@ -89,7 +87,6 @@ public class Explosion extends Entity {
             location.x -= 100;
             location.y -= 40;
             this.setLocation(location);
-            System.out.println(location);
             exptype = type;
             explosion3 = SpaceShoooter.assetManager.get("explosions/exp2_player.png");
             TextureRegion[][] tmp = TextureRegion.split(explosion3, explosion3.getWidth() / 8, explosion3.getHeight() / 8);

@@ -79,7 +79,7 @@ public class MainMenu implements Screen {
         Label owner = new Label("made by Pawel Miskiewicz", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         table.debug();
 
-        table.add(title).colspan(3).center();
+        table.add(title).center().colspan(2);
         table.add(help).width(70).height(70).row();
         table.add(playButton).expand().width(300).height(50);
         table.add(coopButton).expand().width(300).height(50).row();

@@ -36,6 +36,11 @@ public class Enemy extends Entity {
     private Timer timer;
     private TimerTask movmentTask;
 
+    private float playerPosX;
+    private float playerPosY;
+    private float diffX;
+    private float diffY;
+
     private boolean canShoot = true;
     private boolean changeDir = true;
     private boolean isDead = false;
@@ -55,6 +60,7 @@ public class Enemy extends Entity {
 
     private Vector2 startingLocation;
 
+    private Vector2 fireDest;
     private boolean shootFirst = true;
     private boolean shootSecond = true;
     private boolean shootThird = true;
@@ -157,7 +163,8 @@ public class Enemy extends Entity {
                 }, randomFireTime);
             }
             if(shootSecond) {
-                laser2 = new Laser(this, 2, getLocation().cpy().add(115, 87), new Vector2(-13, 2));
+                locateEnemy(115, 107);
+                laser2 = new Laser(this, 2, getLocation().cpy().add(115, 87), fireDest);
                 EntityManager.getInstance().addEntity(laser2);
                 shootSecond = false;
                 Space.getInstance().getTimer().schedule(new TimerTask() {
@@ -168,7 +175,8 @@ public class Enemy extends Entity {
                 }, rF1);
             }
             if(shootThird) {
-                laser3 = new Laser(this, 3, getLocation().cpy().add(115, 67), new Vector2(-13, -2));
+                locateEnemy(115,57);
+                laser3 = new Laser(this, 3, getLocation().cpy().add(115, 67), fireDest);
                 EntityManager.getInstance().addEntity(laser3);
                 shootThird = false;
                 Space.getInstance().getTimer().schedule(new TimerTask() {
@@ -190,6 +198,7 @@ public class Enemy extends Entity {
                 }, rF3);
             }
             if(shootFifth) {
+
                 laser5 = new Laser(this, 1, getLocation().cpy().add(284, 140), new Vector2(-13, 0));
                 EntityManager.getInstance().addEntity(laser5);
                 shootFifth = false;
@@ -201,7 +210,8 @@ public class Enemy extends Entity {
                 }, rF4);
             }
             if(shootSixth) {
-                laser6 = new Laser(this, 4, getLocation().cpy().add(200, 50), new Vector2(-13, 4));
+                locateEnemy(200, 40);
+                laser6 = new Laser(this, 4, getLocation().cpy().add(200, 50), fireDest);
                 EntityManager.getInstance().addEntity(laser6);
                 shootSixth = false;
                 Space.getInstance().getTimer().schedule(new TimerTask() {
@@ -212,7 +222,8 @@ public class Enemy extends Entity {
                 }, rF5);
             }
             if(shootSeventh) {
-                laser7 = new Laser(this, 5, getLocation().cpy().add(200, 100), new Vector2(-13, -4));
+                locateEnemy(200, 90);
+                laser7 = new Laser(this, 5, getLocation().cpy().add(200, 100), fireDest);
                 EntityManager.getInstance().addEntity(laser7);
                 shootSeventh = false;
                 Space.getInstance().getTimer().schedule(new TimerTask() {
@@ -475,8 +486,8 @@ public class Enemy extends Entity {
             }
         }
         else if(initialMovement && enemyType == 3) {
-            this.getLocation().x -= this.getVelocity().x *3 * Gdx.graphics.getDeltaTime();
-            startingLocation.x += this.getVelocity().x *3 * Gdx.graphics.getDeltaTime();
+            this.getLocation().x -= this.getVelocity().x *10 * Gdx.graphics.getDeltaTime();
+            startingLocation.x += this.getVelocity().x *10 * Gdx.graphics.getDeltaTime();
             if(startingLocation.x  >500 ) {
                 initialMovement = false;
                 Random rand = new Random();
@@ -526,18 +537,24 @@ public class Enemy extends Entity {
         if(enemyType == 1) {
             if (!initialMovement && changeDir && (getLocation().y < (SpaceShoooter.getHeight() - toDraw.getHeight() - 5)) && (getLocation().x > 500)) {
                 this.getLocation().y += this.getVelocity().y / 2 * Gdx.graphics.getDeltaTime();
-                this.getLocation().x -= this.getVelocity().x / 8 * Gdx.graphics.getDeltaTime();
+                this.getLocation().x -= this.getVelocity().x / 8 * Space.getInstance().getLevel() * Gdx.graphics.getDeltaTime();
             }
             else if (!initialMovement && !changeDir && (getLocation().y > 5) && (getLocation().x > 500)) {
                 this.getLocation().y -= this.getVelocity().y / 2 * Gdx.graphics.getDeltaTime();
                 this.getLocation().x -= this.getVelocity().x / 8 * Gdx.graphics.getDeltaTime();
             }
         }
-        else if(enemyType == 3 || enemyType == 2) {
+        else if(enemyType == 2) {
             if (!initialMovement && changeDir && (getLocation().y < (SpaceShoooter.getHeight() - toDraw.getHeight() - 5)))
                 this.getLocation().y += this.getVelocity().y / 2 * Gdx.graphics.getDeltaTime();
             else if (!initialMovement && !changeDir && (getLocation().y > 5))
                 this.getLocation().y -= this.getVelocity().y / 2 * Gdx.graphics.getDeltaTime();
+        }
+        else if(enemyType == 3) {
+            if (!initialMovement && changeDir && (getLocation().y < (SpaceShoooter.getHeight() - toDraw.getHeight() - 5)))
+                this.getLocation().y += this.getVelocity().y / 1.5 * Gdx.graphics.getDeltaTime();
+            else if (!initialMovement && !changeDir && (getLocation().y > 5))
+                this.getLocation().y -= this.getVelocity().y / 1.5 * Gdx.graphics.getDeltaTime();
         }
     }
 
@@ -585,6 +602,21 @@ public class Enemy extends Entity {
         explosion = new Explosion(this.getLocation(), 3);
         EntityManager.getInstance().addEntity(explosion);
         EntityManager.getInstance().removeEntity(this);
+    }
+
+    private void locateEnemy(int x, int y) {
+        playerPosX = Space.getInstance().getPositionX();
+        playerPosY = Space.getInstance().getPositionY();
+        Vector2 player = new Vector2(playerPosX,playerPosY);
+        Vector2 enemy = new Vector2(getLocation().x, getLocation().y);
+        diffX = getLocation().x+x - playerPosX;
+        diffY = playerPosY - getLocation().y-y;
+        float angle = (float) Math.atan(diffY/diffX);
+        System.out.println(angle);
+        fireDest = new Vector2(10, 10);
+        fireDest.setAngleRad(angle);
+        fireDest.x = -fireDest.x;
+
     }
 
 
