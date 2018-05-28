@@ -12,8 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-import pl.kompanpawel.spaceshoooter.Screens.GameScreen;
-import pl.kompanpawel.spaceshoooter.Screens.HelpScreen;
 import pl.kompanpawel.spaceshoooter.SpaceShoooter;
 
 
@@ -23,6 +21,7 @@ public class MainMenu implements Screen {
     private Table table;
     private TextButton playButton;
     private TextButton coopButton;
+    private TextButton loadButton;
     private TextButton help;
     private SpriteBatch spriteBatch;
 
@@ -53,6 +52,7 @@ public class MainMenu implements Screen {
 
         playButton = new TextButton("Play",  game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         coopButton = new TextButton("Co-op play", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
+        loadButton = new TextButton("Load game", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         help = new TextButton("?", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         playButton.addListener(new ChangeListener() {
             @Override
@@ -66,6 +66,13 @@ public class MainMenu implements Screen {
                 game.setScreen(new GameScreen(game, 2));
             }
         });
+        loadButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                game.setScreen(new GameScreen(game, 3));
+            }
+        });
+
         help.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -83,6 +90,7 @@ public class MainMenu implements Screen {
         table.add(help).width(70).height(70).row();
         table.add(playButton).expand().width(300).height(50);
         table.add(coopButton).expand().width(300).height(50).row();
+        table.add(loadButton).colspan(2).expand().width(300).height(50).row();
         table.add(owner).colspan(2);
         table.setTouchable(Touchable.childrenOnly);
         Gdx.input.setInputProcessor(stage);

@@ -8,7 +8,6 @@ import pl.kompanpawel.spaceshoooter.*;
 import pl.kompanpawel.spaceshoooter.Space.Space;
 
 import java.util.Random;
-import java.util.Timer;
 import java.util.TimerTask;
 
 public class Enemy extends Entity {
@@ -33,7 +32,6 @@ public class Enemy extends Entity {
     private int enemyType;
     private int health;
 
-    private Timer timer;
     private TimerTask movmentTask;
 
     private float playerPosX;
@@ -56,11 +54,10 @@ public class Enemy extends Entity {
 
     private int randomFireTime, rF1, rF2, rF3, rF4, rF5, rF6, rF7, rF8;
     private int fire;
-    private int mode = 1;
 
     private Vector2 startingLocation;
-
     private Vector2 fireDest;
+
     private boolean shootFirst = true;
     private boolean shootSecond = true;
     private boolean shootThird = true;
@@ -69,7 +66,7 @@ public class Enemy extends Entity {
     private boolean shootSixth = true;
     private boolean shootSeventh = true;
     private boolean shootEighth = true;
-    private boolean shootNineth = true;
+    private boolean shootNinth = true;
 
 
     public Enemy(int type, Vector2 location, Vector2 velocity) {
@@ -128,7 +125,9 @@ public class Enemy extends Entity {
     }
 
     public void fire() {
-        if(EntityManager.getInstance().isPause()) {return;}
+        if(EntityManager.getInstance().isPause()) {
+            return;
+        }
         if (enemyType == 1) {
             if (!canShoot) {return;}
             if (isDead) {return;}
@@ -244,14 +243,14 @@ public class Enemy extends Entity {
                     }
                 }, rF7);
             }
-            if(shootNineth) {
+            if(shootNinth) {
                 laser9 = new Laser(this, 1, getLocation().cpy().add(300, 177), new Vector2(-15, 0));
                 EntityManager.getInstance().addEntity(laser9);
-                shootNineth = false;
+                shootNinth = false;
                 Space.getInstance().getTimer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        shootNineth = true;
+                        shootNinth = true;
                     }
                 }, rF8);
             }
@@ -616,7 +615,6 @@ public class Enemy extends Entity {
         fireDest = new Vector2(10, 10);
         fireDest.setAngleRad(angle);
         fireDest.x = -fireDest.x;
-
     }
 
 

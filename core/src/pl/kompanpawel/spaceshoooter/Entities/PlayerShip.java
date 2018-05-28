@@ -20,6 +20,7 @@ public class PlayerShip extends Entity {
 
     private int health;
     private int score;
+    private int playerNumber;
 
     private boolean shootTop = true;
     private boolean isDead = false;
@@ -30,14 +31,15 @@ public class PlayerShip extends Entity {
             xWing = SpaceShoooter.assetManager.get("ships/xwing.png");
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 * 3));
             this.setVelocity(new Vector2(300, 300));
-            health = 100;
-
+            health = 10;
+            playerNumber = 1;
         }
         else if (player == 2) {
             xWing = SpaceShoooter.assetManager.get("ships/xwing.png");
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 ));
             this.setVelocity(new Vector2(300, 300));
-            health = 5;
+            health = 10;
+            playerNumber = 2;
         }
     }
 
@@ -138,10 +140,23 @@ public class PlayerShip extends Entity {
         }
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public int getScore() {
         return score;
     }
 
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
 
-
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
 }

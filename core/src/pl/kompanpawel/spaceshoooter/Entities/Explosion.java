@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import pl.kompanpawel.spaceshoooter.SpaceShoooter;
 
 
@@ -106,6 +105,7 @@ public class Explosion extends Entity {
     }
 
     public void update(float delta) {
+        if(EntityManager.getInstance().isPause()) {return;}
         stateTime += 4 * delta;
         this.getLocation().x -= 0.2;
         if (anim.isAnimationFinished(stateTime)) {

@@ -3,6 +3,7 @@ package pl.kompanpawel.spaceshoooter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import pl.kompanpawel.spaceshoooter.Entities.EntityManager;
 import pl.kompanpawel.spaceshoooter.Entities.PlayerShip;
 import pl.kompanpawel.spaceshoooter.Space.Space;
 
@@ -29,6 +30,8 @@ public class GameUI {
             font.draw(spriteBatch, "Can't shoot: magnetic field", 10, camera.viewportHeight - 60);
         if(!Space.getInstance().isPlayerCanShoot() && !Space.getInstance().isChain())
             font.draw(spriteBatch, "Magnetic field off \nLaser restart", 10, camera.viewportHeight - 60);
+        if(EntityManager.getInstance().isPause())
+            font.draw(spriteBatch, "Game paused",camera.viewportWidth/2,camera.viewportHeight/2);
         /*if(playerShip.getLaserAmmo()>0)
             font.draw(spriteBatch, "Shots: "+playerShip.getLaserAmmo(), 10, camera.viewportHeight - 60);
         else

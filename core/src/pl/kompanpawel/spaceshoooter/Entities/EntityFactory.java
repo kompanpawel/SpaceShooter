@@ -1,8 +1,6 @@
 package pl.kompanpawel.spaceshoooter.Entities;
 
 import com.badlogic.gdx.math.Vector2;
-import pl.kompanpawel.spaceshoooter.Entities.Enemy;
-import pl.kompanpawel.spaceshoooter.Entities.Entity;
 import pl.kompanpawel.spaceshoooter.SpaceShoooter;
 
 public class EntityFactory {
@@ -69,7 +67,7 @@ public class EntityFactory {
 
     public static Entity factorExecutor() {
         Enemy newExecutor;
-        newExecutor = new Enemy(3, new Vector2(SpaceShoooter.getWidth()+60,SpaceShoooter.getHeight()/2-90), new Vector2(200,20));
+        newExecutor = new Enemy(3, new Vector2(SpaceShoooter.getWidth()+50,SpaceShoooter.getHeight()/2-90), new Vector2(200,20));
         return newExecutor;
     }
 
@@ -82,5 +80,23 @@ public class EntityFactory {
         Enemy newDestroyer;
         newDestroyer = new Enemy(2, new Vector2(-1000, 500), new Vector2(200, 20));
         return newDestroyer;
+    }
+
+    public static Entity factorCustomTie(Vector2 location, Vector2 velocity) {
+        Enemy newTie;
+        newTie = new Enemy(1, location,velocity);
+        return newTie;
+    }
+
+    public static Entity factorCustomDestroyer(Vector2 location, Vector2 velocity) {
+        Enemy newDestroyer;
+        newDestroyer = new Enemy(2,location ,velocity);
+        return newDestroyer;
+    }
+
+    public static Entity factorCustomExecutor (Vector2 location, Vector2 velocity) {
+        Enemy newExecutor;
+        newExecutor = new Enemy(3,location ,velocity);
+        return newExecutor;
     }
 }

@@ -27,7 +27,7 @@ public class Laser extends Entity {
     }
 
     public void update() {
-
+        if(EntityManager.getInstance().isPause()) {return;}
         if(!isValid) {
             EntityManager.getInstance().removeEntity(this);
             return;

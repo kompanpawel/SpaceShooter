@@ -10,8 +10,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import pl.kompanpawel.spaceshoooter.*;
 import pl.kompanpawel.spaceshoooter.Entities.*;
+import pl.kompanpawel.spaceshoooter.Saving.GameData;
 import pl.kompanpawel.spaceshoooter.Space.Space;
 
+import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameScreen implements Screen {
@@ -54,9 +56,35 @@ public class GameScreen implements Screen {
             entityManager.addEntity(secondShip);
             Space.getInstance().addEnemies();
             isCoop = true;
+            Space.getInstance().setCoop(true);
             setCamera();
             setSprite();
             gameUI = new GameUI(game);
+        }
+        else if(mode == 3) {
+            this.game = game;
+            GameData.getInstance().loadGameData();
+            entityManager.addEntity(playerShip);
+            playerShip.setLocation(new Vector2(GameData.getInstance().getPlayerPosX(),GameData.getInstance().getPlayerPosY()));
+            playerShip.setHealth(GameData.getInstance().getPlayerHealth());
+            playerShip.setScore(GameData.getInstance().getPlayerScore());
+            Space.getInstance().setCoop(GameData.getInstance().isCoop());
+            isCoop = Space.getInstance().isCoop();
+            if(Space.getInstance().isCoop()) {
+                entityManager.addEntity(secondShip);
+                secondShip.setLocation(new Vector2(GameData.getInstance().getPlayer2PosX(), GameData.getInstance().getPlayer2PosY()));
+                secondShip.setHealth(GameData.getInstance().getPlayer2Health());
+                secondShip.setScore(GameData.getInstance().getPlayer2Score());
+            }
+            isCoop = Space.getInstance().isCoop();
+            setCamera();
+            setSprite();
+            gameUI = new GameUI(game);
+            Space.getInstance().setEnemyNumber(GameData.getInstance().getEnemiesNumber());
+            Space.getInstance().setLevel(GameData.getInstance().getLevel());
+            Space.getInstance().setWave(GameData.getInstance().getWave());
+            Space.getInstance().setType(GameData.getInstance().getType());
+            Space.getInstance().addEnemiesAfterLoad();
         }
     }
     private void setCamera(){
@@ -68,6 +96,7 @@ public class GameScreen implements Screen {
         spriteBatch.setProjectionMatrix(SpaceShoooter.getCamera().combined);
     }
     private void background() {
+        if(EntityManager.getInstance().isPause()) {return;}
         bgx1 -= 1;
         bgx2 -= 1;
 
@@ -93,8 +122,14 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         playerShip.keyboard(1);
+        if(playerShip.getHealth() <=0 ||((isCoop) && playerShip.getHealth()<=0 && secondShip.getHealth()<=0)) {
+            game.setScreen(new EndScreen(game));
+            EntityManager.getInstance().removeAllEntities();
+        }
         if(isCoop)
             secondShip.keyboard(2);
+        if(Gdx.input.isKeyJustPressed(Input.Keys.F5))
+            GameData.getInstance().getGameData();
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             if (!EntityManager.getInstance().isPause()) {
                 EntityManager.getInstance().setPause(true);

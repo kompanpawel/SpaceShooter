@@ -40,7 +40,7 @@ public class EntityManager {
             entityToAdd.clear();
         }
         for (Entity e : entitySet) {
-            if(pause) {return;}
+            //if(pause) {return;}
             e.draw(batch, delta);
         }
     }

@@ -1,11 +1,13 @@
 package pl.kompanpawel.spaceshoooter.Space;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
-
 import com.badlogic.gdx.math.Vector2;
 import pl.kompanpawel.spaceshoooter.Entities.*;
+import pl.kompanpawel.spaceshoooter.Saving.GameData;
+import pl.kompanpawel.spaceshoooter.Saving.SaveController;
 import pl.kompanpawel.spaceshoooter.SpaceShoooter;
 
 import java.util.Timer;
@@ -15,7 +17,7 @@ import java.util.TimerTask;
 public class Space {
     private static Space instance = new Space();
 
-    private int level = 3;
+    private int level = 1;
     private int enemyNumber = 0;
     private int wave = 0;
     private int type = 0;
@@ -29,9 +31,10 @@ public class Space {
     private boolean chain = false;
     private boolean playerCanShoot = true;
 
+    private boolean isCoop = false;
+
     private float locX;
     private float locY;
-    private int angle;
 
     private Polygon execPoly;
     private Polygon enemyPoly;
@@ -40,9 +43,9 @@ public class Space {
 
     private ShapeRenderer shapeRenderer;
 
-    private Vector2 playerPosition;
-
-
+    public static Space getInstance() { return instance; }
+    private EntityManager entityManager = EntityManager.getInstance();
+    private Explosion explosion;
 
     public float getPositionX() {
         for (Entity ent : entityManager.getEntities()) {
@@ -52,6 +55,7 @@ public class Space {
             }
         }
         return locX;
+
     }
     public float getPositionY() {
         for (Entity ent : entityManager.getEntities()) {
@@ -63,18 +67,20 @@ public class Space {
         return locY;
     }
 
-
-
-
-    public void setAngle(Laser laser) {
-        laser.getVelocity().setAngle((float) Math.tan(locX/locY));
+    public void addEnemiesAfterLoad() {
+        if(type == 0) {
+            for(int i = 0; i< enemyNumber*2; i+=2) {
+                entityManager.addEntity(EntityFactory.factorCustomTie(new Vector2(GameData.getInstance().getEnemiesPositions().get(i),GameData.getInstance().getEnemiesPositions().get(i+1)),new Vector2(200,20)));
+            }
+        }
+        else if(type == 1) {
+            for (int i = 0; i < enemyNumber * 2; i += 2) {
+                entityManager.addEntity(EntityFactory.factorCustomDestroyer(new Vector2(GameData.getInstance().getEnemiesPositions().get(i), GameData.getInstance().getEnemiesPositions().get(i + 1)), new Vector2(200, 20)));
+            }
+        }
+        else if(type == 2)
+            entityManager.addEntity(EntityFactory.factorCustomExecutor(new Vector2(GameData.getInstance().getEnemiesPositions().get(0), GameData.getInstance().getEnemiesPositions().get(1)), new Vector2(200, 20)));
     }
-
-
-    public static Space getInstance() { return instance; }
-    private EntityManager entityManager = EntityManager.getInstance();
-    private Explosion explosion;
-
 
     public void addEnemies() {
         if(type == 0) {
@@ -287,9 +293,7 @@ public class Space {
                             enemy.getLocation().y + enemy.getHeight()
 
                     });
-                    //enemyRect = new Rectangle(Math.round(enemy.getLocation().x), Math.round(enemy.getLocation().y),enemy.getWidth()-10, enemy.getHeight());
                 }
-
                 if((enemyPoly!=null &&(Intersector.overlapConvexPolygons(enemyPoly, laserPoly) && laser.getOwner() instanceof PlayerShip)) ||(execPoly!=null && (Intersector.overlapConvexPolygons(laserPoly,execPoly) && laser.getOwner() instanceof PlayerShip))) {
                     explosion = new Explosion(laser.getLocation(), 2);
                     EntityManager.getInstance().addEntity(explosion);
@@ -300,6 +304,8 @@ public class Space {
             }
         }
     }
+
+
 
     public int getEnemyNumber() {
         return enemyNumber;
@@ -357,5 +363,11 @@ public class Space {
         return timer;
     }
 
+    public boolean isCoop() {
+        return isCoop;
+    }
 
+    public void setCoop(boolean coop) {
+        isCoop = coop;
+    }
 }
