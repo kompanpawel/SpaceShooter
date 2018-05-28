@@ -128,9 +128,15 @@ public class GameScreen implements Screen {
         }
         if(isCoop)
             secondShip.keyboard(2);
-        if(Gdx.input.isKeyJustPressed(Input.Keys.F5))
-            GameData.getInstance().getGameData();
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+            game.setScreen(new MainMenu(game));
+            entityManager.removeAllEntities();
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.F5)) {
+            GameData.getInstance().getGameData();
+            Space.getInstance().setShowTextSaved(true);
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             if (!EntityManager.getInstance().isPause()) {
                 EntityManager.getInstance().setPause(true);
                 Space.getInstance().getTimer().schedule(new TimerTask() {
@@ -138,7 +144,7 @@ public class GameScreen implements Screen {
                     public void run() {
                         while(EntityManager.getInstance().isPause()) {
                             System.out.println(EntityManager.getInstance().isPause());
-                            if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE))
+                            if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE))
                                 EntityManager.getInstance().setPause(false);
                         }
                         System.out.println("zwalniam");

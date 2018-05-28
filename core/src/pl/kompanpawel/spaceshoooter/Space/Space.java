@@ -32,6 +32,8 @@ public class Space {
     private boolean playerCanShoot = true;
 
     private boolean isCoop = false;
+    private boolean showTextSaved = false;
+
 
     private float locX;
     private float locY;
@@ -67,6 +69,14 @@ public class Space {
         return locY;
     }
 
+    public void changeTextFlag() {
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                showTextSaved = false;
+            }
+        },3000);
+    }
     public void addEnemiesAfterLoad() {
         if(type == 0) {
             for(int i = 0; i< enemyNumber*2; i+=2) {
@@ -369,5 +379,13 @@ public class Space {
 
     public void setCoop(boolean coop) {
         isCoop = coop;
+    }
+
+    public boolean isShowTextSaved() {
+        return showTextSaved;
+    }
+
+    public void setShowTextSaved(boolean showTextSaved) {
+        this.showTextSaved = showTextSaved;
     }
 }

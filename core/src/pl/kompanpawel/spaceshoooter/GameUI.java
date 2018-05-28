@@ -1,11 +1,15 @@
 package pl.kompanpawel.spaceshoooter;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pl.kompanpawel.spaceshoooter.Entities.EntityManager;
 import pl.kompanpawel.spaceshoooter.Entities.PlayerShip;
 import pl.kompanpawel.spaceshoooter.Space.Space;
+
+import java.util.TimerTask;
 
 public class GameUI {
     private SpaceShoooter game;
@@ -32,6 +36,10 @@ public class GameUI {
             font.draw(spriteBatch, "Magnetic field off \nLaser restart", 10, camera.viewportHeight - 60);
         if(EntityManager.getInstance().isPause())
             font.draw(spriteBatch, "Game paused",camera.viewportWidth/2,camera.viewportHeight/2);
+        if(Space.getInstance().isShowTextSaved()) {
+            font.draw(spriteBatch, "Game saved", camera.viewportWidth / 2, camera.viewportHeight / 2);
+            Space.getInstance().changeTextFlag();
+        }
         /*if(playerShip.getLaserAmmo()>0)
             font.draw(spriteBatch, "Shots: "+playerShip.getLaserAmmo(), 10, camera.viewportHeight - 60);
         else
@@ -46,11 +54,17 @@ public class GameUI {
         font.draw(spriteBatch,"Points: "+playerShip.getScore(), 10, camera.viewportHeight - 45);
         if(Space.getInstance().isChain())
             font.draw(spriteBatch, "Can't shoot: magnetic field", 10, camera.viewportHeight - 60);
-        if(!Space.getInstance().isPlayerCanShoot())
+        if(!Space.getInstance().isPlayerCanShoot() && !Space.getInstance().isChain())
             font.draw(spriteBatch, "Laser restart", 10, camera.viewportHeight - 60);
         font.draw(spriteBatch, "Player 2",10,60);
         font.draw(spriteBatch, "HP: "+ secondShip.getHealth(), 10,  45);
         font.draw(spriteBatch,"Points: "+secondShip.getScore(), 10, 30);
+        if(EntityManager.getInstance().isPause())
+            font.draw(spriteBatch, "Game paused",camera.viewportWidth/2,camera.viewportHeight/2);
+        if(Space.getInstance().isShowTextSaved()) {
+            font.draw(spriteBatch, "Game saved", camera.viewportWidth / 2, camera.viewportHeight / 2);
+            Space.getInstance().changeTextFlag();
+        }
         /*if(secondShip.getLaserAmmo()>0)
             font.draw(spriteBatch, "Shots: "+secondShip.getLaserAmmo(), 10,  15);
         else

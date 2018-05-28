@@ -53,26 +53,28 @@ public class MainMenu implements Screen {
         playButton = new TextButton("Play",  game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         coopButton = new TextButton("Co-op play", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         loadButton = new TextButton("Load game", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
-        help = new TextButton("?", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
+        help = new TextButton("Help", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         playButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 game.setScreen(new GameScreen(game,1));
+                stage.clear();
             }
         });
         coopButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 game.setScreen(new GameScreen(game, 2));
+                stage.clear();
             }
         });
         loadButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 game.setScreen(new GameScreen(game, 3));
+                stage.clear();
             }
         });
-
         help.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -84,13 +86,13 @@ public class MainMenu implements Screen {
         table.setFillParent(true);
         Label title = new Label("SpaceShoooter", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         Label owner = new Label("made by Pawel Miskiewicz", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
-        table.debug();
+        //table.debug();
 
-        table.add(title).center().colspan(2);
-        table.add(help).width(70).height(70).row();
+        table.add(title).center().colspan(2).row();
         table.add(playButton).expand().width(300).height(50);
         table.add(coopButton).expand().width(300).height(50).row();
-        table.add(loadButton).colspan(2).expand().width(300).height(50).row();
+        table.add(loadButton).expand().width(300).height(50);
+        table.add(help).expand().width(300).height(50).row();
         table.add(owner).colspan(2);
         table.setTouchable(Touchable.childrenOnly);
         Gdx.input.setInputProcessor(stage);
