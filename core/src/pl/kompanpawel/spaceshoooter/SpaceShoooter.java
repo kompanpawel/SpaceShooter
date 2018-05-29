@@ -11,8 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import pl.kompanpawel.spaceshoooter.Screens.MainMenu;
 
 public class SpaceShoooter extends Game {
-	public SpriteBatch batch;
-    BitmapFont font;
+	private SpriteBatch batch;
+    private BitmapFont font;
 	public static AssetManager assetManager = new AssetManager();
 	private static OrthographicCamera camera = new OrthographicCamera();
 

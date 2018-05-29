@@ -25,13 +25,8 @@ public class Explosion extends Entity {
 
     private static Animation <TextureRegion> anim = null;
     private static Animation <TextureRegion> anim_enemy = null;
-    private static Animation <TextureRegion> anim_player = null;
     private static Animation <TextureRegion> anim_enemy_laser = null;
     private static Animation <TextureRegion> anim_player_laser = null;
-
-    private Texture explosion;
-    private Texture explosion2;
-    private Texture explosion3;
 
     private int exptype;
 
@@ -39,7 +34,7 @@ public class Explosion extends Entity {
     private boolean exp2 = false;
     private boolean exp3 = false;
 
-    float stateTime;
+    private float stateTime;
 
     public Explosion(Vector2 location, int type) {
         if(type == 3) {
@@ -47,7 +42,7 @@ public class Explosion extends Entity {
             location.y -= 55;
             this.setLocation(location);
             exptype = type;
-            explosion = SpaceShoooter.assetManager.get("explosions/exp3.png");
+            Texture explosion = SpaceShoooter.assetManager.get("explosions/exp3.png");
             TextureRegion[][] tmp = TextureRegion.split(explosion, explosion.getWidth() / 8, explosion.getHeight() / 8);
             TextureRegion[] expFrames = new TextureRegion[8 * 8];
             int index = 0;
@@ -67,7 +62,7 @@ public class Explosion extends Entity {
             location.y -= 30;
             this.setLocation(location);
             exptype = type;
-            explosion2 = SpaceShoooter.assetManager.get("explosions/exp2.png");
+            Texture explosion2 = SpaceShoooter.assetManager.get("explosions/exp2.png");
             TextureRegion[][] tmp = TextureRegion.split(explosion2, explosion2.getWidth() / 8, explosion2.getHeight() / 8);
             TextureRegion[] expFrames = new TextureRegion[8 * 8];
             int index = 0;
@@ -87,7 +82,7 @@ public class Explosion extends Entity {
             location.y -= 40;
             this.setLocation(location);
             exptype = type;
-            explosion3 = SpaceShoooter.assetManager.get("explosions/exp2_player.png");
+            Texture explosion3 = SpaceShoooter.assetManager.get("explosions/exp2_player.png");
             TextureRegion[][] tmp = TextureRegion.split(explosion3, explosion3.getWidth() / 8, explosion3.getHeight() / 8);
             TextureRegion[] expFrames = new TextureRegion[8 * 8];
             int index = 0;
@@ -104,7 +99,7 @@ public class Explosion extends Entity {
         }
     }
 
-    public void update(float delta) {
+    private void update(float delta) {
         if(EntityManager.getInstance().isPause()) {return;}
         stateTime += 4 * delta;
         this.getLocation().x -= 0.2;

@@ -7,7 +7,6 @@ public abstract class Entity {
 
     private Vector2 velocity;
     private Vector2 location;
-    private int acceleration;
 
     public abstract void draw(SpriteBatch batch, float delta);
 
@@ -17,7 +16,7 @@ public abstract class Entity {
         return velocity;
     }
 
-    public void setVelocity(Vector2 velocity) {
+    void setVelocity(Vector2 velocity) {
         this.velocity = velocity;
     }
 
@@ -29,11 +28,4 @@ public abstract class Entity {
         this.location = location;
     }
 
-    public int getAcceleration() {
-        return acceleration;
-    }
-
-    public void setAcceleration(int acceleration) {
-        this.acceleration = acceleration;
-    }
 }

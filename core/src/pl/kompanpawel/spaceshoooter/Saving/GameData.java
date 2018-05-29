@@ -110,124 +110,55 @@ public class GameData {
     public float getPlayerPosX() {
         return playerPosX;
     }
-
-    public void setPlayerPosX(float playerPosX) {
-        this.playerPosX = playerPosX;
-    }
-
     public float getPlayerPosY() {
         return playerPosY;
     }
-
-    public void setPlayerPosY(float playerPosY) {
-        this.playerPosY = playerPosY;
-    }
-
     public int getEnemiesNumber() {
         return enemiesNumber;
     }
-
-    public void setEnemiesNumber(int enemiesNumber) {
-        this.enemiesNumber = enemiesNumber;
-    }
-
     public int getLevel() {
         return level;
     }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
     public int getWave() {
         return wave;
     }
-
-    public void setWave(int wave) {
-        this.wave = wave;
-    }
-
     public int getType() {
         return type;
     }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public boolean isStop() {
+    boolean isStop() {
         return stop;
     }
-
-    public void setStop(boolean stop) {
-        this.stop = stop;
-    }
-
-    public boolean isChain() {
+    boolean isChain() {
         return chain;
     }
-
-    public void setChain(boolean chain) {
-        this.chain = chain;
-    }
-
-    public boolean isPlayerCanShoot() {
+    boolean isPlayerCanShoot() {
         return playerCanShoot;
     }
-
-    public void setPlayerCanShoot(boolean playerCanShoot) {
-        this.playerCanShoot = playerCanShoot;
-    }
-
     public List<Float> getEnemiesPositions() {
         return enemiesPositions;
     }
-
-    public void setEnemiesPositions(List<Float> enemiesPositions) {
-        this.enemiesPositions = enemiesPositions;
-    }
-
     public boolean isCoop() {
         return isCoop;
     }
-
-    public void setCoop(boolean coop) {
-        isCoop = coop;
-    }
-
     public float getPlayer2PosX() {
         return player2PosX;
     }
-
-    public void setPlayer2PosX(float player2PosX) {
-        this.player2PosX = player2PosX;
-    }
-
     public float getPlayer2PosY() {
         return player2PosY;
     }
-
-    public void setPlayer2PosY(float player2PosY) {
-        this.player2PosY = player2PosY;
-    }
-
     public int getPlayerHealth() {
         return playerHealth;
     }
-
     public int getPlayerScore() {
         return playerScore;
     }
-
     public int getPlayer2Health() {
         return player2Health;
     }
-
     public int getPlayer2Score() {
         return player2Score;
     }
-
-    public List<Integer> getEnemiesHealth() {
+    List<Integer> getEnemiesHealth() {
         return enemiesHealth;
     }
 }

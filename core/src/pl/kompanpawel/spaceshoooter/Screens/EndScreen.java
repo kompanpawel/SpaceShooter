@@ -20,10 +20,10 @@ public class EndScreen implements Screen {
     private Stage stage;
     private Table table;
     private SpriteBatch spriteBatch;
-    SpaceShoooter game;
-    Texture background;
+    private SpaceShoooter game;
+    private Texture background;
 
-    public EndScreen(SpaceShoooter game) {
+    EndScreen(SpaceShoooter game) {
         this.game = game;
         setCamera();
         setSprite();
@@ -43,10 +43,10 @@ public class EndScreen implements Screen {
         background = new Texture("backgrounds/Parallax100.png");
         stage = new Stage(new StretchViewport(SpaceShoooter.getCamera().viewportWidth, SpaceShoooter.getCamera().viewportHeight));
 
-        table = new Table(game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
+        table = new Table(SpaceShoooter.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
         table.setFillParent(true);
 
-        Label endText = new Label("GAME OVER\n\n\nPress Enter to back to main menu,", game.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
+        Label endText = new Label("GAME OVER\n\n\nPress Enter to back to main menu,", SpaceShoooter.assetManager.get("fonts_and_others/uiskin.json", Skin.class));
 
         table.add(endText).expand();
         Gdx.input.setInputProcessor(stage);

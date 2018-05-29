@@ -1,13 +1,12 @@
 package pl.kompanpawel.spaceshoooter.Space;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import pl.kompanpawel.spaceshoooter.Entities.*;
 import pl.kompanpawel.spaceshoooter.Saving.GameData;
-import pl.kompanpawel.spaceshoooter.Saving.SaveController;
+
 import pl.kompanpawel.spaceshoooter.SpaceShoooter;
 
 import java.util.Timer;
@@ -20,7 +19,7 @@ public class Space {
     private int level = 1;
     private int enemyNumber = 0;
     private int wave = 0;
-    private int type = 0;
+    private int type = 1;
 
 
     private long delay = 4000;
@@ -42,12 +41,10 @@ public class Space {
     private Polygon enemyPoly;
     private Polygon playerPoly;
     private Polygon laserPoly;
-
-    private ShapeRenderer shapeRenderer;
+    private Polygon destPoly;
 
     public static Space getInstance() { return instance; }
     private EntityManager entityManager = EntityManager.getInstance();
-    private Explosion explosion;
 
     public float getPositionX() {
         for (Entity ent : entityManager.getEntities()) {
@@ -182,8 +179,8 @@ public class Space {
                 }
             }
     }
-
     public void drawShip () {
+        ShapeRenderer shapeRenderer;
         if(playerPoly!=null) {
             shapeRenderer = new ShapeRenderer();
             shapeRenderer.setAutoShapeType(true);
@@ -208,12 +205,12 @@ public class Space {
             shapeRenderer.polygon(laserPoly.getTransformedVertices());
             shapeRenderer.end();
         }
-        if(execPoly!= null) {
+        if(destPoly!= null) {
             shapeRenderer = new ShapeRenderer();
             shapeRenderer.setAutoShapeType(true);
             shapeRenderer.setProjectionMatrix(SpaceShoooter.getCamera().combined);
             shapeRenderer.begin();
-            shapeRenderer.polygon(execPoly.getTransformedVertices());
+            shapeRenderer.polygon(destPoly.getTransformedVertices());
             shapeRenderer.end();
         }
     }
@@ -248,6 +245,7 @@ public class Space {
                 });
             }
 
+            Explosion explosion;
             if (ent instanceof PlayerShip) {
                 PlayerShip playerShip = (PlayerShip) ent;
                 if(playerShip.isDead())
@@ -278,7 +276,7 @@ public class Space {
                 Enemy enemy = (Enemy) ent;
                 if (enemy.isDead())
                     continue;
-                if (((Enemy) ent).getEnemyType() == 2 || ((Enemy) ent).getEnemyType() == 3) {
+                if (((Enemy) ent).getEnemyType() == 3) {
                     execPoly = new Polygon(new float[]{
                             enemy.getLocation().x + 348,
                             enemy.getLocation().y + enemy.getHeight(),
@@ -291,7 +289,22 @@ public class Space {
                             enemy.getLocation().x +3,
                             enemy.getLocation().y + enemy.getHeight() - 97
                     });
-                } else {
+                }
+                else if(((Enemy) ent).getEnemyType() == 2) {
+                    destPoly = new Polygon(new float[]{
+                            enemy.getLocation().x + 378,
+                            enemy.getLocation().y + enemy.getHeight(),
+                            enemy.getLocation().x + 434,
+                            enemy.getLocation().y + enemy.getHeight() - 60,
+                            enemy.getLocation().x + 434,
+                            enemy.getLocation().y + enemy.getHeight() - 114,
+                            enemy.getLocation().x + 378,
+                            enemy.getLocation().y + enemy.getHeight() - 225,
+                            enemy.getLocation().x +3,
+                            enemy.getLocation().y + enemy.getHeight() - 117
+                    });
+                }
+                else {
                     enemyPoly = new Polygon(new float[]{
                             enemy.getLocation().x,
                             enemy.getLocation().y,
@@ -304,7 +317,7 @@ public class Space {
 
                     });
                 }
-                if((enemyPoly!=null &&(Intersector.overlapConvexPolygons(enemyPoly, laserPoly) && laser.getOwner() instanceof PlayerShip)) ||(execPoly!=null && (Intersector.overlapConvexPolygons(laserPoly,execPoly) && laser.getOwner() instanceof PlayerShip))) {
+                if((enemyPoly!=null &&(Intersector.overlapConvexPolygons(enemyPoly, laserPoly) && laser.getOwner() instanceof PlayerShip)) ||(execPoly!=null && (Intersector.overlapConvexPolygons(laserPoly,execPoly) && laser.getOwner() instanceof PlayerShip)) || (destPoly!=null && (Intersector.overlapConvexPolygons(laserPoly,destPoly) && laser.getOwner() instanceof PlayerShip))) {
                     explosion = new Explosion(laser.getLocation(), 2);
                     EntityManager.getInstance().addEntity(explosion);
                     laser.hit(enemy);
@@ -345,9 +358,6 @@ public class Space {
         return stop;
     }
 
-    public void setStop(boolean stop) {
-        this.stop = stop;
-    }
 
     public int getType() {
         return type;
@@ -359,10 +369,6 @@ public class Space {
 
     public boolean isChain() {
         return chain;
-    }
-
-    public void setChain(boolean chain) {
-        this.chain = chain;
     }
 
     public boolean isPlayerCanShoot() {

@@ -1,7 +1,5 @@
 package pl.kompanpawel.spaceshoooter;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,16 +7,14 @@ import pl.kompanpawel.spaceshoooter.Entities.EntityManager;
 import pl.kompanpawel.spaceshoooter.Entities.PlayerShip;
 import pl.kompanpawel.spaceshoooter.Space.Space;
 
-import java.util.TimerTask;
+
 
 public class GameUI {
-    private SpaceShoooter game;
     private SpriteBatch spriteBatch;
     private OrthographicCamera camera;
     private BitmapFont font;
 
-    public GameUI(SpaceShoooter game) {
-        this.game = game;
+    public GameUI() {
         font = new BitmapFont();
         camera = SpaceShoooter.getCamera();
         spriteBatch = new SpriteBatch();

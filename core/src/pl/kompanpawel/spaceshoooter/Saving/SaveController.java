@@ -9,13 +9,13 @@ import java.util.Map;
 public class SaveController implements Preferences {
 
 
-    public Preferences prefs = Gdx.app.getPreferences("Game_saved_data");
+    Preferences prefs = Gdx.app.getPreferences("Game_saved_data");
 
     private int counter = 1;
 
-    public SaveController() {}
+    SaveController() {}
 
-    public void saveFile() {
+    void saveFile() {
         prefs.putFloat("Player_position_X", GameData.getInstance().getPlayerPosX());
         prefs.putFloat("Player_position_Y", GameData.getInstance().getPlayerPosY());
         prefs.putInteger("Player_health", GameData.getInstance().getPlayerHealth());

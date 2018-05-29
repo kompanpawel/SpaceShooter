@@ -53,7 +53,7 @@ public class EntityManager {
         return entitySet;
     }
 
-    public void removeEntity(Entity e) {
+    void removeEntity(Entity e) {
         entityToRemove.add(e);
     }
 

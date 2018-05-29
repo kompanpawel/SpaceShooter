@@ -31,7 +31,7 @@ public class PlayerShip extends Entity {
             xWing = SpaceShoooter.assetManager.get("ships/xwing.png");
             this.setLocation(new Vector2(20, SpaceShoooter.getCamera().viewportHeight / 4 * 3));
             this.setVelocity(new Vector2(300, 300));
-            health = 10;
+            health = 100;
             playerNumber = 1;
         }
         else if (player == 2) {
@@ -49,30 +49,12 @@ public class PlayerShip extends Entity {
             destroyed();
     }
 
-    public void destroyed() {
+    private void destroyed() {
         isDead = true;
         EntityManager.getInstance().removeEntity(this);
     }
 
-    public boolean isDead() {
-        return isDead;
-    }
 
-    public int getHealth() {
-        return health;
-    }
-
-    public int getWidth() {
-        return xWing.getWidth();
-    }
-
-    public int getHeight() {
-        return xWing.getHeight();
-    }
-
-    public void addScore(int add) {
-        score  += add;
-    }
 
     public void keyboard(int player) {
         if(player == 1) {
@@ -156,7 +138,23 @@ public class PlayerShip extends Entity {
         return playerNumber;
     }
 
-    public void setPlayerNumber(int playerNumber) {
-        this.playerNumber = playerNumber;
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getWidth() {
+        return xWing.getWidth();
+    }
+
+    public int getHeight() {
+        return xWing.getHeight();
+    }
+
+    void addScore(int add) {
+        score  += add;
     }
 }

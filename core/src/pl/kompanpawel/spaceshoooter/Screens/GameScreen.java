@@ -7,13 +7,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import pl.kompanpawel.spaceshoooter.*;
 import pl.kompanpawel.spaceshoooter.Entities.*;
 import pl.kompanpawel.spaceshoooter.Saving.GameData;
 import pl.kompanpawel.spaceshoooter.Space.Space;
-
-import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameScreen implements Screen {
@@ -21,17 +18,10 @@ public class GameScreen implements Screen {
     private Texture background1;
     private Texture background2;
 
-    private float screenWidth = 0;
-    private float screenHeight = 0;
-
     private boolean isCoop = false;
 
     private int bgx1 = 0;
     private int bgx2;
-
-    private Window window;
-
-
 
     private SpaceShoooter game;
     private PlayerShip playerShip = new PlayerShip(1);
@@ -48,7 +38,7 @@ public class GameScreen implements Screen {
             Space.getInstance().addEnemies();
             setCamera();
             setSprite();
-            gameUI = new GameUI(game);
+            gameUI = new GameUI();
         }
         else if(mode == 2) {
             this.game = game;
@@ -59,7 +49,7 @@ public class GameScreen implements Screen {
             Space.getInstance().setCoop(true);
             setCamera();
             setSprite();
-            gameUI = new GameUI(game);
+            gameUI = new GameUI();
         }
         else if(mode == 3) {
             this.game = game;
@@ -79,7 +69,7 @@ public class GameScreen implements Screen {
             isCoop = Space.getInstance().isCoop();
             setCamera();
             setSprite();
-            gameUI = new GameUI(game);
+            gameUI = new GameUI();
             Space.getInstance().setEnemyNumber(GameData.getInstance().getEnemiesNumber());
             Space.getInstance().setLevel(GameData.getInstance().getLevel());
             Space.getInstance().setWave(GameData.getInstance().getWave());
@@ -110,8 +100,6 @@ public class GameScreen implements Screen {
     }
     @Override
     public void show() {
-        screenWidth = SpaceShoooter.getCamera().viewportWidth;
-        screenHeight= SpaceShoooter.getCamera().viewportHeight;
 
         background1 = new Texture("backgrounds/space.gif");
         background2 = new Texture("backgrounds/space.gif");

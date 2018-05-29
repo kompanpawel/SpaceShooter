@@ -26,18 +26,10 @@ public class Enemy extends Entity {
     private Texture destroyer_left;
     private Texture destroyer_right;
 
-    private Entity owner;
-    private Explosion explosion;
-
     private int enemyType;
     private int health;
 
     private TimerTask movmentTask;
-
-    private float playerPosX;
-    private float playerPosY;
-    private float diffX;
-    private float diffY;
 
     private boolean canShoot = true;
     private boolean changeDir = true;
@@ -69,7 +61,7 @@ public class Enemy extends Entity {
     private boolean shootNinth = true;
 
 
-    public Enemy(int type, Vector2 location, Vector2 velocity) {
+    Enemy(int type, Vector2 location, Vector2 velocity) {
         if(type == 1) {
             tie = SpaceShoooter.assetManager.get("ships/rsz_tie_fighter.png");
             toDraw = tie;
@@ -124,7 +116,7 @@ public class Enemy extends Entity {
         }
     }
 
-    public void fire() {
+    private void fire() {
         if(EntityManager.getInstance().isPause()) {
             return;
         }
@@ -174,7 +166,7 @@ public class Enemy extends Entity {
                 }, rF1);
             }
             if(shootThird) {
-                locateEnemy(115,57);
+                locateEnemy(115,58);
                 laser3 = new Laser(this, 3, getLocation().cpy().add(115, 67), fireDest);
                 EntityManager.getInstance().addEntity(laser3);
                 shootThird = false;
@@ -333,7 +325,8 @@ public class Enemy extends Entity {
                 }, rF1);
             }
             if(shootSecond && toDraw == destroyer_left) {
-                laser2 = new Laser(this, 2, getLocation().cpy().add(115, 87), new Vector2(-13, 2));
+                locateEnemy(115, 77);
+                laser2 = new Laser(this, 2, getLocation().cpy().add(115, 87), fireDest);
                 EntityManager.getInstance().addEntity(laser2);
                 shootSecond = false;
                 Space.getInstance().getTimer().schedule(new TimerTask() {
@@ -358,7 +351,8 @@ public class Enemy extends Entity {
                 }, rF2);
             }
             if(shootThird && toDraw == destroyer_left) {
-                laser3 = new Laser(this, 3, getLocation().cpy().add(115, 67), new Vector2(-13, -2));
+                locateEnemy(115, 57);
+                laser3 = new Laser(this, 3, getLocation().cpy().add(115, 67), fireDest);
                 EntityManager.getInstance().addEntity(laser3);
                 shootThird = false;
                 Space.getInstance().getTimer().schedule(new TimerTask() {
@@ -466,7 +460,7 @@ public class Enemy extends Entity {
             }
     }
 
-    public void update() {
+    private void update() {
         if(EntityManager.getInstance().isPause()) {return;}
         if(isDead) {return;}
         if(initialMovement && enemyType == 1) {
@@ -516,8 +510,8 @@ public class Enemy extends Entity {
 
             }
             if(right && canFly) {
-                this.getLocation().x += this.getVelocity().x / 3 * Gdx.graphics.getDeltaTime();
-                startingLocation.x += this.getVelocity().x / 3 * Gdx.graphics.getDeltaTime();
+                this.getLocation().x += this.getVelocity().x /2 * Gdx.graphics.getDeltaTime();
+                startingLocation.x += this.getVelocity().x /2 * Gdx.graphics.getDeltaTime();
             }
             if(startingLocation.x  >SpaceShoooter.getWidth() +30) {
                 toDraw = destroyer_left;
@@ -557,22 +551,6 @@ public class Enemy extends Entity {
         }
     }
 
-    public int getWidth() {
-        return toDraw.getWidth();
-    }
-
-    public int getHeight() {
-        return toDraw.getHeight();
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
     public void getHited(Entity e) {
         health -= 1;
         if(health<=0 && enemyType == 1) {
@@ -589,6 +567,13 @@ public class Enemy extends Entity {
             }
             destroyed();
         }
+        else if(health<=0 && enemyType == 3) {
+            if(e instanceof PlayerShip) {
+                PlayerShip p = (PlayerShip) e;
+                p.addScore(300);
+            }
+            destroyed();
+        }
     }
     @Override
     public void dispose() {
@@ -597,55 +582,51 @@ public class Enemy extends Entity {
         Space.getInstance().setEnemyNumber(Space.getInstance().getEnemyNumber()-1);
     }
 
-    public void destroyed() {
-        explosion = new Explosion(this.getLocation(), 3);
+    private void destroyed() {
+        Explosion explosion = new Explosion(this.getLocation(), 3);
         EntityManager.getInstance().addEntity(explosion);
         EntityManager.getInstance().removeEntity(this);
     }
 
     private void locateEnemy(int x, int y) {
-        playerPosX = Space.getInstance().getPositionX();
-        playerPosY = Space.getInstance().getPositionY();
-        Vector2 player = new Vector2(playerPosX,playerPosY);
-        Vector2 enemy = new Vector2(getLocation().x, getLocation().y);
-        diffX = getLocation().x+x - playerPosX;
-        diffY = playerPosY - getLocation().y-y;
-        float angle = (float) Math.atan(diffY/diffX);
+        float playerPosX = Space.getInstance().getPositionX();
+        float playerPosY = Space.getInstance().getPositionY();
+        float diffX = getLocation().x + x - playerPosX;
+        float diffY = playerPosY - getLocation().y - y;
+        float angle = (float) Math.atan(diffY / diffX);
         System.out.println(angle);
         fireDest = new Vector2(10, 10);
         fireDest.setAngleRad(angle);
         fireDest.x = -fireDest.x;
     }
 
+    public int getWidth() {
+        return toDraw.getWidth();
+    }
+
+    public int getHeight() {
+        return toDraw.getHeight();
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    private void setHealth(int health) {
+        this.health = health;
+    }
 
     public boolean isDead() {
         return isDead;
-    }
-
-    public boolean initialMovement() {return initialMovement;}
-
-    public Vector2 getStartingLocation() {
-        return startingLocation;
-    }
-
-    public void setStartingLocation(Vector2 startingLocation) {
-        this.startingLocation = startingLocation;
     }
 
     public int getEnemyType() {
         return enemyType;
     }
 
-    public void setEnemyType(int enemyType) {
-        this.enemyType = enemyType;
-    }
-
     public boolean isChainOn() {
         return chainOn;
     }
 
-    public void setChainOn(boolean chainOn) {
-        this.chainOn = chainOn;
-    }
 }
 

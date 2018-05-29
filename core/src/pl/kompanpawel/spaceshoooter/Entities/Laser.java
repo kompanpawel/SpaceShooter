@@ -11,11 +11,10 @@ public class Laser extends Entity {
 
     private Texture laser;
     private Entity owner;
-    private Explosion explosion;
 
 
 
-    public Laser(Entity owner,int type, Vector2 sentLocation, Vector2 sentVelocity) {
+    Laser(Entity owner, int type, Vector2 sentLocation, Vector2 sentVelocity) {
         this.setLocation(sentLocation);
         this.setVelocity(sentVelocity);
         if(owner instanceof PlayerShip)
@@ -26,7 +25,7 @@ public class Laser extends Entity {
         this.owner = owner;
     }
 
-    public void update() {
+    private void update() {
         if(EntityManager.getInstance().isPause()) {return;}
         if(!isValid) {
             EntityManager.getInstance().removeEntity(this);
@@ -52,7 +51,7 @@ public class Laser extends Entity {
 
     }
 
-    public void onHit(Vector2 pos) {
+    private void onHit(Vector2 pos) {
         EntityManager.getInstance().removeEntity(this);
     }
 
